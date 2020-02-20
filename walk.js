@@ -1,0 +1,1 @@
+console.log(require('path').parse('C:\Users\MLMin\OneDrive\Desktop\CECS-343'))
