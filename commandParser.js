@@ -7,7 +7,9 @@ function parseCMD(str){
     var cmd = splitWhiteSpace(str)
 
     
-    console.log(cmd)
+    switch(cmd[0]){
+        case "MakeRepo": makeRepo(cmd[1]);
+    }
 
     
 }   
@@ -30,4 +32,8 @@ function splitWhiteSpace(str){
     cmdArgs[elementCount] = str.substr(previousWhiteSpace,i);
 
     return cmdArgs;
+}
+
+function makeRepo(foldName){
+    console.log(foldName);
 }
