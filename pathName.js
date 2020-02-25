@@ -1,13 +1,13 @@
 // still need to write read algo for this write read so it reads 
 // file in to an array of strings
 
-
-function calculatestringSum(stringName){
-    sum = 0;
-    multiplier = 1;
-    for(i = 0; i<stringName.length; i++){
+// works as expected
+function calculateStringSum(stringName){
+    var sum = 0;
+    var multiplier = 1;
+    for(i = 0; i < stringName.length; i++){
         //calculate the ascii code times the multiplyer 
-        sum += multiplier * stringName[i].charCodeAt(0);
+        sum += (multiplier * stringName.charCodeAt(i));
 // alter the multiplyer based off of previous
         if(multiplier == 1){
             multiplier = 7;
@@ -20,17 +20,19 @@ function calculatestringSum(stringName){
         }
     }
     // return the sum of all characters in the string times their multiplier
-    sum = sum % 1000;
+    sum = sum % 10000;
     return sum;
 }
 
 function calculateFileSize(arrayOfFile){// paramater needs to be an array
-    sum = 0;
-    multiplier = 1; 
+    var sum = 0;
+    var multiplier = 1; 
 
-    for(i = 0; i < arrayOfFile; i++){
-        for(j = 0; j < arrayOfFile[i].length; j++){
-            sum += multiplier * stringName[i].charCodeAt(0);
+    for(i = 0; i < arrayOfFile.length; i++){
+        var line = arrayOfFile[i];
+        for(j = 0; j < line.length; j++){
+            sum += multiplier * (line.charCodeAt(j));
+            
 // alter the multiplyer based off of previous
             if(multiplier == 1){
                 multiplier = 7;
@@ -38,21 +40,28 @@ function calculateFileSize(arrayOfFile){// paramater needs to be an array
                 multiplier = 3;
             }else if(multiplier == 3){
                 multiplier = 11;
-            }else{
+            }else if( multiplier == 11){
                 multiplier = 1;
             }
         }
     }
-    sum = sum % 1000;
+    sum = sum % 10000;
     return sum;
 }
-
+// works on everything
 function calculateFileLength(arrayOfFile){
-    count = 0;
-    for(i = 0; i < arrayOfFile; i++){
-        count += arrayOfFile[i].size();
+    var count = 0;
+    for(i = 0; i < arrayOfFile.length; i++){
+        count += arrayOfFile[i].length;
 
     }
     return count;
 }
+
+//var hello = ["HELLO WORLD"];
+//var word = "bot/a/b/"
+//console.log(calculateStringSum(word))
+
+
+
 
