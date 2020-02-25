@@ -58,6 +58,13 @@ function calculateFileLength(arrayOfFile){
     return count;
 }
 
+const fs = require('fs') 
+  
+fs.readFile('HW.txt', (err, data) => { 
+    if (err) throw err; 
+  
+    console.log(data.toString()); 
+})
 //var hello = ["HELLO WORLD"];
 //var word = "bot/a/b/"
 //console.log(calculateStringSum(word))
