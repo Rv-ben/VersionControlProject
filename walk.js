@@ -1,15 +1,15 @@
-const { resolve } = require('path');
-const { readdir } = require('fs').promises;
+//initializing path and fs
+const path = require('path');
+const fs = require('fs');
+//joining path of directory rn only reads Documents and path has to be set
+const directoryPath = path.join(__dirname, 'Documents');
 
-async function getFiles(dir) {
-  const dirents = await readdir(dir, { withFileTypes: true });
-  const files = await Promise.all(dirents.map((dirent) => {
-    const res = resolve(dir, dirent.name);
-    return dirent.isDirectory() ? getFiles(res) : res;
-  }));
-  return Array.prototype.concat(...files);
-}
-
-getFiles('C:\Users\MLMin\OneDrive\Desktop\CECS-343')
-  .then(files => console.log(files))
-  .catch(e => console.error(e));
+fs.readdir(directoryPath, function (err, files) {
+    //error checking
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    files.forEach(function (file) {
+        console.log(file); 
+    });
+});
