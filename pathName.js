@@ -1,6 +1,10 @@
 // still need to write read algo for this write read so it reads 
 // file in to an array of strings
 
+module.exports = {
+    calc: calculations(fullPath,fileName)
+}
+
 // works as expected
 function calculateStringSum(stringName){
     var sum = 0;
