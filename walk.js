@@ -5,6 +5,10 @@ const fs = require('fs');
 const directoryPath = path.join(__dirname);
 var compute = require('./pathName')
 
+module.exports= {
+    walk: fileWalk
+}
+
 fileWalk(directoryPath);
 
 
