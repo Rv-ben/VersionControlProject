@@ -9,6 +9,7 @@ fileWalk(directoryPath);
 
 
 function fileWalk(directoryPath){
+    listofCal= []
 fs.readdir(directoryPath, function (err, files) {
     //error checking
     if (err) {
@@ -19,7 +20,8 @@ fs.readdir(directoryPath, function (err, files) {
         if(fs.statSync(directoryPath+"/"+file).isDirectory()){
             fileWalk(directoryPath+"/"+file)
         }
-        else compute.calc(directoryPath,file); 
+        else listofCal.append(compute.calc(directoryPath,file)); 
     });
+    return listofCal;
 });
 }
