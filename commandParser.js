@@ -1,6 +1,10 @@
 
 parseCMD("MakeRepo folder_name");
 
+module.exports = {
+    parse: parseCMD
+}
+
 function parseCMD(str){
     
     //sperate the cmd and args
