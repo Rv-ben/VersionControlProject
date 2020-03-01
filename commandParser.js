@@ -1,19 +1,21 @@
 
-parseCMD("MakeRepo folder_name");
 
 module.exports = {
     parse: parseCMD
 }
 
+var makeReep = require('./walk');
+
 function parseCMD(str){
     
     //sperate the cmd and args
     var cmd = splitWhiteSpace(str)
-
+    console.log(cmd)
+    if(cmd[1] != undefined)
     
-    switch(cmd[0]){
-        case "MakeRepo": makeRepo(cmd[1]);
-    }
+        switch(cmd[0]){
+            case "MakeRepo": makeReep.walk(cmd[1]);
+        }
 
     
 }   
@@ -28,7 +30,7 @@ function splitWhiteSpace(str){
     for(var i = 0; i<str.length ; i++){
         if(str[i] == ' '){
             cmdArgs[elementCount] = str.substr(previousWhiteSpace,i);
-            previousWhiteSpace=i;
+            previousWhiteSpace=i+1;
             elementCount++;
         }  
     } 
@@ -36,8 +38,4 @@ function splitWhiteSpace(str){
     cmdArgs[elementCount] = str.substr(previousWhiteSpace,i);
 
     return cmdArgs;
-}
-
-function makeRepo(foldName){
-    console.log(foldName);
 }
