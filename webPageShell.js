@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var ex = express();
 var BodyParser =  require('body-parser');
-var port = 5224;
+var port = 5110;
 var cmdParser = require('./commandParser');
 
 
