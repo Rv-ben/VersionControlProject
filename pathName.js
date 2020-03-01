@@ -2,7 +2,7 @@
 // file in to an array of strings
 
 module.exports = {
-    calc: calculations(fullPath,fileName)
+    calc: calculations
 }
 
 // works as expected
@@ -65,8 +65,9 @@ function calculateFileLength(arrayOfFile){
 
 // only function that needs to be used from this class for outsiders  
 function calculations(fullPath, fileName){
+
     var fs = require('fs');
-    var rdFile = fs.readFileSync(fileName, 'utf8'); 
+    var rdFile = fs.readFileSync(fullPath+"/"+fileName, 'utf8'); 
     let lines = rdFile.split("\r\n");
 
     var newName;
@@ -78,9 +79,6 @@ function calculations(fullPath, fileName){
     newName = "P" + p + "L" + l + "C" + c + ".txt";
 
     return newName;
-
-
-
 }
 
 
