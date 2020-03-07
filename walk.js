@@ -8,21 +8,30 @@ module.exports= {
     walk: fileWalk
 }
 
-
-function fileWalk(directoryPath){
+//Walks a folder recursively 
+async function fileWalk(directoryPath){
     listofCal= [];
-    fs.readdir(directoryPath, function (err, files) {
-    //error checking
+    
+    //access the folder
+    fs.readdir(directoryPath, async function (err, files) {
+        //error checking
         if (err) {
-           return console.log('Unable to scan directory: ' + err);
+            return console.log('Unable to scan directory: ' + err);
         }
-        files.forEach(function (file) {
-            if(fs.statSync(directoryPath+"/"+file).isDirectory()){
-                fileWalk(directoryPath+"/"+file)
+        console.log(directoryPath);
+        console.log("-----------------------------");
+        //For every folder or directory
+        files.forEach(async function (file) {
+            //if is directory 
+            if (fs.statSync(directoryPath + "/" + file).isDirectory()) {
+                //walk
+                console.log(file);
+                const result = Promise.resolve().then(fileWalk(directoryPath + "/" + file));
             }
-            else listofCal.push(compute.calc(directoryPath,file)); 
+            //if not a dot file get calcs
+            else if (!file.startsWith(".")) {
+                console.log(file + "     " + compute.calc(directoryPath, file));
+            }
         });
-        console.log(listofCal.toString())
     });
-    return listofCal;
 }
