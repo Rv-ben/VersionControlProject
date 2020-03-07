@@ -8,7 +8,7 @@ var cmdParser = require('./commandParser');
 
 //Send the shell
 ex.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/shellFrontEnd.html'));
+    res.sendFile(path.join(__dirname+'/shell.html'));
 })
 
 //Start server
