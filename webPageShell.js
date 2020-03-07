@@ -24,6 +24,6 @@ ex.use(BodyParser.urlencoded({ extended: true }))
 ex.post('/cmdForm', function(req,res){
     fs.writeFile("Manifest.txt","Command Issued:  "+ req.body.cmd +"\n\n",function(error){})
     cmdParser.parse(req.body.cmd)
-    res.end()
+    res.sendFile(path.join(__dirname+'/OutputTest.html'))
 })
 
