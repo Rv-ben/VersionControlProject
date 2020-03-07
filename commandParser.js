@@ -10,7 +10,6 @@ function parseCMD(str){
     
     //sperate the cmd and args
     var cmd = splitWhiteSpace(str)
-    console.log(cmd)
     if(cmd[1] != undefined)
     
         switch(cmd[0]){
