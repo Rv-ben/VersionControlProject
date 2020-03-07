@@ -1,8 +1,9 @@
 var express = require('express');
 var path = require('path');
+const fs = require('fs');
 var ex = express();
 var BodyParser =  require('body-parser');
-var port = 5130;
+var port = 5131;
 var cmdParser = require('./commandParser');
 
 //Send the shell
@@ -21,8 +22,7 @@ ex.use(BodyParser.urlencoded({ extended: true }))
 
 //Form submittion handling 
 ex.post('/cmdForm', function(req,res){
-    console.log("Command Issued:  "+ req.body.cmd)
-    console.log("\n\n")
+    fs.writeFile("Manifest.txt","Command Issued:  "+ req.body.cmd +"\n\n",function(error){})
     cmdParser.parse(req.body.cmd)
     res.end()
 })
