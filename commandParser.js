@@ -6,12 +6,15 @@ module.exports = {
 
 var makeReep = require('./walk');
 
+
+//Parse and Interpret Commands
 function parseCMD(str){
     
     //sperate the cmd and args
     var cmd = splitWhiteSpace(str)
     if(cmd[1] != undefined)
-    
+
+        //List of commands 
         switch(cmd[0]){
             case "MakeRepo": makeReep.walk(cmd[1]);
         }
@@ -19,6 +22,7 @@ function parseCMD(str){
     
 }   
 
+//Seperate strings, returns list of strings
 function splitWhiteSpace(str){
     //find the amount of whiteSpaces
     
