@@ -18,20 +18,22 @@ async function fileWalk(directoryPath){
         if (err) {
             return console.log('Unable to scan directory: ' + err);
         }
-        console.log(directoryPath);
+        console.log("Directory: "+directoryPath);
         console.log("-----------------------------");
         //For every folder or directory
         files.forEach(async function (file) {
             //if is directory 
             if (fs.statSync(directoryPath + "/" + file).isDirectory()) {
                 //walk
-                console.log(file);
-                const result = Promise.resolve().then(fileWalk(directoryPath + "/" + file));
+                console.log("Directory :  "+file);
+                fileWalk(directoryPath + "/" + file);
             }
             //if not a dot file get calcs
             else if (!file.startsWith(".")) {
                 console.log(file + "     " + compute.calc(directoryPath, file));
             }
         });
+        console.log("-----------------------------");
+        console.log("\n\n");
     });
 }
