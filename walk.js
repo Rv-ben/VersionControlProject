@@ -18,22 +18,24 @@ async function fileWalk(directoryPath){
         if (err) {
             return console.log('Unable to scan directory: ' + err);
         }
-        console.log("Directory: "+directoryPath);
-        console.log("-----------------------------");
+
+        fs.appendFile('Manifest.txt',"Directory: "+directoryPath+"\n" ,function(error){}) 
+        fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
+
         //For every folder or directory
         files.forEach(async function (file) {
             //if is directory 
             if (fs.statSync(directoryPath + "/" + file).isDirectory()) {
                 //walk
-                console.log("Directory :  "+file);
+                fs.appendFile('Manifest.txt',"Directory :  "+file+"\n",function(error){})
                 fileWalk(directoryPath + "/" + file);
             }
             //if not a dot file get calcs
             else if (!file.startsWith(".")) {
-                console.log(file + "     " + compute.calc(directoryPath, file));
+                fs.appendFile('Manifest.txt',file + "     " + compute.calc(directoryPath, file)+"\n",function(error){})
             }
         });
-        console.log("-----------------------------");
-        console.log("\n\n");
+        fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
+        fs.appendFile('Manifest.txt',"\n\n",function(error){})
     });
 }
