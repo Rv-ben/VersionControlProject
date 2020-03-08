@@ -21,6 +21,8 @@ async function fileWalk(directoryPath){
         }
 
         fs.appendFile('Manifest.txt',"Directory: "+directoryPath+"\n" ,function(error){}) 
+        let rightNow = new Date();
+        fs.appendFile('Manifest.txt', rightNow + "\n", function(error){});
         fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
 
         //For every folder or directory
