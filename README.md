@@ -14,7 +14,7 @@ The only arguments are the folder name which should be in the directory
 
 # npm Installs
 
-npm install express --save
+npm install express --save \n
 npm install fs 
 npm install body-parser
 npm install path
