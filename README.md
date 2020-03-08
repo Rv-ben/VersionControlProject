@@ -11,3 +11,10 @@ Use localhost port 5110
 
 As of now there is only one command "MakeRepo"
 The only arguments are the folder name which should be in the directory 
+
+# npm Installs
+
+npm install express --save
+npm install fs 
+npm install body-parser
+npm install path
