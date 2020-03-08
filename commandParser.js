@@ -17,9 +17,9 @@ function parseCMD(str){
         //List of commands 
         switch(cmd[0]){
             case "MakeRepo": makeReep.walk(cmd[1]);
+            makeReep.copy(cmd[1]);
         }
 
-    
 }   
 
 //Seperate strings, returns list of strings

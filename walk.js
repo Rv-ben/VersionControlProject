@@ -5,7 +5,8 @@ const fs = require('fs');
 var compute = require('./pathName')
 
 module.exports= {
-    walk: fileWalk
+    walk: fileWalk,
+    copy: cpy
 }
 
 //Walks a folder recursively 
@@ -38,4 +39,10 @@ async function fileWalk(directoryPath){
         fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
         fs.appendFile('Manifest.txt',"\n\n",function(error){})
     });
+}
+
+function cpy(directoryPath){
+    fs.readFile('Manifest.txt',function(err,data){
+        fs.writeFile(directoryPath+"/Manifest.txt",data,function(err){})
+    })
 }
