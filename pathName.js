@@ -81,6 +81,16 @@ function calculations(fullPath, fileName){
     return newName;
 }
 
+// function to rename a file to the correct format
+// requires two strings first the old file name and second the new file name
+function renameFile(currFileName, newName){
+    var fs = require('fs');
+    try{
+        fs.renameSync(currFileName, newName);
+    }catch(err){
+        console.log('no such file exists');
+    }
+}
 
 
 
