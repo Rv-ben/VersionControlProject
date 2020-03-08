@@ -3,9 +3,9 @@ Version Control Project made for Software Engineering Class
 
 # Testing
 
-In the terminal, enter "node webPageShell.js"
+In the terminal, enter "node webPageShell.js" \
 
-Use localhost port 5110
+The test folder must be in the source folder, or the command must include a path relative from the source folder
 
 # Commands 
 
