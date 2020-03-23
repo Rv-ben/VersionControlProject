@@ -1,6 +1,6 @@
 
 var mrc = require("./makeRepoCommand");
-
+var lr = require("./label");
 
 module.exports = {
     parse: parseCMD
@@ -16,6 +16,7 @@ function parseCMD(str){
         //List of commands 
         switch(cmd[0]){
             case "MakeRepo": mrc.mkrepo(cmd[1]); break;
+            case "Label" : lr.label(cmd[1],cmd[2],cmd[3]); break;
         }
 
 }   
