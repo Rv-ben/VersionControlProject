@@ -16,11 +16,7 @@ function parseCMD(str){
 
         //List of commands 
         switch(cmd[0]){
-            case "MakeRepo":
-            let rightNow = new Date();
-            fs.appendFile('Manifest.txt', rightNow + "\n", function(error){}); 
-            makeReep.walk(cmd[1]);
-            makeReep.copy(cmd[1]);
+            case "MakeRepo": makeRepo(cmd[1]); break;
         }
 
 }   
@@ -44,4 +40,12 @@ function splitWhiteSpace(str){
     cmdArgs[elementCount] = str.substr(previousWhiteSpace,i);
 
     return cmdArgs;
+}
+
+//Makes a repo given a folder argument
+function makeRepo(arg){
+    let rightNow = new Date();
+    s.appendFile('Manifest.txt', rightNow + "\n", function(error){}); 
+    makeReep.walk(arg);
+    makeReep.copy(arg);
 }
