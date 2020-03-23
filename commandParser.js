@@ -1,11 +1,10 @@
-const fs = require('fs');
+
+var mrc = require("./makeRepoCommand");
+
 
 module.exports = {
     parse: parseCMD
 }
-
-var makeReep = require('./walk');
-
 
 //Parse and Interpret Commands
 function parseCMD(str){
@@ -16,7 +15,7 @@ function parseCMD(str){
 
         //List of commands 
         switch(cmd[0]){
-            case "MakeRepo": makeRepo(cmd[1]); break;
+            case "MakeRepo": mrc.mkrepo(cmd[1]); break;
         }
 
 }   
@@ -40,26 +39,4 @@ function splitWhiteSpace(str){
     cmdArgs[elementCount] = str.substr(previousWhiteSpace,i);
 
     return cmdArgs;
-}
-
-//Makes a repo given a folder argument
-function makeRepo(arg){
-
-    let rightNow = new Date();
-    
-    //Makes a new directory if one does not exist 
-    if(!fs.existsSync(arg))
-        fs.mkdirSync(arg)
-
-    //Exits if the directory is already a repo
-    if(fs.existsSync(arg+"/.versions")){
-        console.log("Already a repo")
-        return
-    }
-
-    fs.mkdirSync(arg+"/.versions")
-
-    fs.appendFile('Manifest.txt', rightNow + "\n", function(error){}); 
-    makeReep.walk(arg);
-    makeReep.copy(arg);
 }
