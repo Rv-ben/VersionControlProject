@@ -43,6 +43,6 @@ async function fileWalk(directoryPath){
 
 function cpy(directoryPath){
     fs.readFile('Manifest.txt',function(err,data){
-        fs.writeFile(directoryPath+"/Manifest.txt",data,function(err){})
+        fs.writeFile(directoryPath+"/.versions/Manifest.txt",data,function(err){})
     })
 }
