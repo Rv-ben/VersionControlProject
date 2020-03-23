@@ -44,11 +44,19 @@ function splitWhiteSpace(str){
 
 //Makes a repo given a folder argument
 function makeRepo(arg){
+
     let rightNow = new Date();
     
+    //Makes a new directory if one does not exist 
     if(!fs.existsSync(arg))
         fs.mkdirSync(arg)
-    
+
+    //Exits if the directory is already a repo
+    if(fs.existsSync(arg+"/.versions")){
+        console.log("Already a repo")
+        return
+    }
+
     fs.mkdirSync(arg+"/.versions")
 
     fs.appendFile('Manifest.txt', rightNow + "\n", function(error){}); 
