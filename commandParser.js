@@ -45,6 +45,12 @@ function splitWhiteSpace(str){
 //Makes a repo given a folder argument
 function makeRepo(arg){
     let rightNow = new Date();
+    
+    if(!fs.existsSync(arg))
+        fs.mkdirSync(arg)
+    
+    fs.mkdirSync(arg+"/.versions")
+
     fs.appendFile('Manifest.txt', rightNow + "\n", function(error){}); 
     makeReep.walk(arg);
     makeReep.copy(arg);
