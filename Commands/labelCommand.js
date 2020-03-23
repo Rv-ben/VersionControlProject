@@ -1,5 +1,5 @@
 
-var artId = require("./pathName");
+var artId = require("../pathName");
 var fs = require('fs');
 
 
