@@ -78,7 +78,7 @@ function calculations(fullPath, fileName){
 
     newName = "P" + p + "L" + l + "C" + c + ".txt";
 
-    renameFile(fileName,newName);
+    //renameFile(fileName,newName);
 
     return newName;
 }
