@@ -1,6 +1,6 @@
 
-var mrc = require("./Commands/makeRepoCommand");
-var lr = require("./Commands/labelCommand");
+var mrc = require("./makeRepoCommand");
+var lr = require("./labelCommand");
 
 module.exports = {
     parse: parseCMD

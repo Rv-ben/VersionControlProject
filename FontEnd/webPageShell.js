@@ -4,7 +4,7 @@ const fs = require('fs');
 var ex = express();
 var BodyParser =  require('body-parser');
 var port = 5131;
-var cmdParser = require('./commandParser');
+var cmdParser = require('../Commands/commandParser');
 
 //Send the shell
 ex.get('/',function(req,res){

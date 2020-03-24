@@ -1,8 +1,8 @@
 const fs = require('fs');
 
 
-var makeReep = require('../walk');
-var calc = require('../pathName');
+var makeReep = require('../HelperFunctions/walk');
+var calc = require('../HelperFunctions/pathName');
 
 module.exports = {
     mkrepo: makeRepo
