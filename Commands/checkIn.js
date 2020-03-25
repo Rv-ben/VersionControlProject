@@ -1,3 +1,4 @@
+function checkIn(checkIn){
 //accept input from user
 var checkIn;
 //need to maintain version sizes
@@ -9,5 +10,7 @@ var versionCount;
 if (sum != previousVersionSize){
 	versionCount += 1;
 	return previousVersionSize = sum;
+	}
+	versionCount += 1;
+	return previousVersionSize;
 }
-    versionCount += 1;
