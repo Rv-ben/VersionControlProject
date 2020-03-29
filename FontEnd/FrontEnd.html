@@ -1,0 +1,23 @@
+
+<html>
+  <body>
+    <h2>
+    File Repository
+    </h2>
+    <form action="FolderName.html" method="GET">
+      <label for="FolderName"> </label>
+      <input type="text" placeholder="CMD Folder_Name" name="FolderName"required>
+      <button type="submit">Create Repo</button>
+    </form>
+    <p id="demo"></p>
+    <script>
+      var repoNames = ["VCSProj", "Test", "Siska"];
+			var printableNames = "";
+			var i;
+			for (i = 0; i < repoNames.length; i++) {
+				printableNames += (i + 1) + ". " + repoNames[i] + "<br>";
+			}
+			document.getElementById("demo").innerHTML = printableNames;
+    </script>
+  </body>
+</html>
