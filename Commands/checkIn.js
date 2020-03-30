@@ -1,6 +1,8 @@
 //need to pull the previous manifest and the new one
-
-
+const fs = require('fs');
+var checkIn = fs.readFile('Manifest.txt');
+var previousVersionSize = fs.readFile()
+;
 function checkIn(checkIn, previousVersionSize){
 //accept input from user
 var newDirectory = walk.fileWalk(checkIn);
