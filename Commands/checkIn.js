@@ -1,16 +1,20 @@
-function checkIn(checkIn){
+//need to pull the previous manifest and the new one
+
+
+function checkIn(checkIn, previousVersionSize){
 //accept input from user
-var checkIn;
+var newDirectory = walk.fileWalk(checkIn);
 //need to maintain version sizes
-var previousVersionSize;
-//calculate size of previous version to check for changes being pushed
-var sum = pathName.calculateStringSum(checkIn);
+var oldSize = previousVersionSize;
+//calculate size of manifest from previous version to check for changes being pushed
+var sum = pathName.calculateStringSum(newDirectory);
 var versionCount;
 //check to see if artifact ID has changed and replace if yes
-if (sum != previousVersionSize){
+if (sum != oldSize){
 	versionCount += 1;
-	return previousVersionSize = sum;
+	return oldSize = sum;
 	}
 	versionCount += 1;
-	return previousVersionSize;
+	return oldSize;
 }
+
