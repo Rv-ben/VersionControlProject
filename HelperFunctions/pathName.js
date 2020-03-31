@@ -2,7 +2,8 @@
 // file in to an array of strings
 
 module.exports = {
-    calc: calculations
+    calc: calculations,
+    renameFile:renameFile
 }
 
 // works as expected
