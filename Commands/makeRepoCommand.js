@@ -12,9 +12,15 @@ module.exports = {
 //Makes a repo given a path to folder as an arguument
 function makeRepo(path){
 
+    path = "Repos/"+path;
+
     let rightNow = new Date();
 
     var versionsPath = path+"/.versions";
+
+    //Make a repos folder if one does not exist
+    if(!fs.existsSync("Repos"))
+        fs.mkdirSync("Repos")
     
     //Makes a new directory if one does not exist 
     if(!fs.existsSync(path))

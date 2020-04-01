@@ -41,6 +41,10 @@ div.holder{
      margin-right: 20%;
 }
 
+div.holder:hover{
+    background-color: white;
+}
+
 button{
     color: salmon;
     background-color: beige;
