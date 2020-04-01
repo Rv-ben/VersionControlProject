@@ -60,6 +60,7 @@ async function fileWalkCopy(directoryPath, target, repo){
 
                 copyFolder(directoryPath + "/" + file,currentFolder,file );
                 inFolder = true;
+                // need to talk to john about how you know if you are in a folder / when you know you go back out of a folder
 
 
                 //walk
