@@ -1,0 +1,47 @@
+body{
+    text-align: center;
+    background-color: #edaa53
+}
+form{
+   scale: 150%;
+    margin-bottom: 5%;
+}
+h2{
+    text-align: center;
+    color:salmon;
+    scale: 350%;
+    margin: 4%;
+    background-color: beige;
+    background-blend-mode: darken;
+}
+
+p{
+    color:#db9d4b;
+    scale: 100%;
+    margin-left: 2%;
+    margin-right: 25%;
+    text-align: left;
+    font-size: 125%;
+    text-decoration-style: bold;
+}
+
+div.repoNames{
+    margin: 10%;
+    scale: 200%;
+}
+
+div.list{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+div.holder{
+     background-color:beige;
+     margin-left: 20%;
+     margin-right: 20%;
+}
+
+button{
+    color: salmon;
+    background-color: beige;
+}

@@ -1,23 +1,54 @@
-
+<!DOCTYPE html>
 <html>
+
+  <head>
+    <title>Single Moms Front Page</title>
+    <link rel="stylesheet" href="FrontPageStyle.css">
+  </head>
+
   <body>
-    <h2>
-    File Repository
+
+    <h2 id="Title">
+    Single Mom's Repos
     </h2>
+
     <form action="FolderName.html" method="GET">
       <label for="FolderName"> </label>
-      <input type="text" placeholder="CMD Folder_Name" name="FolderName"required>
+      <input type="text" placeholder="Repo Name" name="FolderName"required>
       <button type="submit">Create Repo</button>
     </form>
-    <p id="demo"></p>
+
+    
+    <div class = "list">
+      <div class="repoNames" id= "repoNames">
+
+      </div>
+    </div>
+
     <script>
       var repoNames = ["VCSProj", "Test", "Siska"];
 			var printableNames = "";
-			var i;
+      var i;
+      
+      
 			for (i = 0; i < repoNames.length; i++) {
-				printableNames += (i + 1) + ". " + repoNames[i] + "<br>";
-			}
-			document.getElementById("demo").innerHTML = printableNames;
+        var listItem = document.createElement("div",{class:"listItem"});
+
+        var textholder = document.createElement("div");
+        textholder.className ="holder";
+
+        var repo = document.createElement("p",{class: "name"});
+        
+        repo.innerText = repoNames[i];
+        
+        listItem.append(textholder);
+        textholder.append(repo);
+
+        document.getElementById("repoNames").appendChild(listItem);
+      }
+
     </script>
+
   </body>
+
 </html>
