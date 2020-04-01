@@ -10,7 +10,7 @@ ex.use(express.static("FrontEnd"));
 
 //Send the shell
 ex.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/FontEnd/FrontPage.html'));
+    res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'));
 })
 
 //Start server
