@@ -6,9 +6,11 @@ var BodyParser =  require('body-parser');
 var port = 5131;
 var cmdParser = require('./Commands/commandParser');
 
+ex.use(express.static("FontEnd"));
+
 //Send the shell
 ex.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/shell.html'));
+    res.sendFile(path.join(__dirname+'/FontEnd/FrontEndTesting.html'));
 })
 
 //Start server
