@@ -3,7 +3,7 @@
 
   <head>
     <title>Single Moms Front Page</title>
-    <link href="FrontPageStyle.css" type="text/css" rel="stylesheet" >
+    <link href="staticFiles/FrontPageStyle.css" type="text/css" rel="stylesheet" >
   </head>
 
   <body>
@@ -12,9 +12,8 @@
     Single Mom's Repos
     </h2>
 
-    <form action="FolderName.html" method="GET">
-      <label for="FolderName"> </label>
-      <input type="text" placeholder="Repo Name" name="FolderName"required>
+    <form action="/MakeRepoForm" method="post">
+      <input type="text" placeholder="Repo Name" name="cmd">
       <button type="submit">Create Repo</button>
     </form>
 
@@ -26,8 +25,6 @@
     </div>
 
     <script>
-      var repoNames = ["VCSProj", "Test", "Siska"];
-			var printableNames = "";
       var i;
       
       
