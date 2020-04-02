@@ -4,6 +4,8 @@
   <head>
     <title>Single Moms Front Page</title>
     <link href="staticFiles/FrontPageStyle.css" type="text/css" rel="stylesheet" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type = "text/javascript" src = "staticFiles/FrontPageList.js"></script>
   </head>
 
   <body>
@@ -12,7 +14,7 @@
     Single Mom's Repos
     </h2>
 
-    <form action="/MakeRepoForm" method="post">
+    <form action="" method="post">
       <input type="text" placeholder="Repo Name" name="cmd">
       <button type="submit">Create Repo</button>
     </form>
@@ -23,28 +25,6 @@
 
       </div>
     </div>
-
-    <script>
-      var i;
-      
-      
-			for (i = 0; i < repoNames.length; i++) {
-        var listItem = document.createElement("div",{class:"listItem"});
-
-        var textholder = document.createElement("div");
-        textholder.className ="holder";
-
-        var repo = document.createElement("p",{class: "name"});
-        
-        repo.innerText = repoNames[i];
-        
-        listItem.append(textholder);
-        textholder.append(repo);
-
-        document.getElementById("repoNames").appendChild(listItem);
-      }
-
-    </script>
 
   </body>
 
