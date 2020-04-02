@@ -1,4 +1,5 @@
 const fs = require('fs');
+const fsx = require('fs-extra')
 
 
 var makeReep = require('../HelperFunctions/walk');
@@ -16,7 +17,7 @@ function makeRepo(path){
 
     let rightNow = new Date();
 
-    var versionsPath = path+"/.versions";
+    var versionsPath = path+"/Versions";
 
     //Make a repos folder if one does not exist
     if(!fs.existsSync("Repos"))
@@ -34,15 +35,16 @@ function makeRepo(path){
 
     fs.mkdirSync(versionsPath)
 
+    fs.mkdirSync(path+"/Current")
+
 
     fs.appendFile('Manifest.txt', rightNow + "\n", function(error){}); 
-    makeReep.walk(path);
-
-    //place manifest in .versions dir
-    cpyManifest(path);
+    makeReep.walk(path+"/Current");
 
     setTimeout(() => {
-        var maniID = calc.calc(path+'/.versions', 'Manifest.txt')
+        //place manifest in .versions dir
+        fsx.copyFileSync(__dirname+"/../Manifest.txt",__dirname+"/../"+path+"/Current/Manifest.txt")
+        var maniID = calc.calc(path+"/Current", 'Manifest.txt')
         makeVersionJSON(versionsPath,maniID);
         addRepoName(path.replace("Repos/",''));
     }, 1500);
@@ -61,8 +63,13 @@ function makeVersionJSON(path, maniID){
 
 //place a copy of the manifest in the .versions folder
 async function cpyManifest(directoryPath){
-    fs.readFile('Manifest.txt',function(err,data){
-        fs.writeFile(directoryPath+"/.versions/Manifest.txt",data,function(err){})
+    console.log(directoryPath);
+    fs.readFileSync(__dirname+'/../Manifest.txt',function(err,data){
+        console.log(data);
+        console.log("err: "+err);
+        fs.writeFileSync(__dirname+"/../"+directoryPath+"/Manifest.txt",data,function(err){
+            console.log("err: "+err);
+        })
     })
 }
 
