@@ -29,60 +29,107 @@ var compute = require('./pathName')
 
 
 
-//Walks a folder recursively 
-async function fileWalkCopy(directoryPath, target, repo){
-    listofCal= [];
+
+
+function fileWalk(directoryPath, target, repo){
     
-    //access the folder
-    fs.readdir(directoryPath, async function (err, files) {
+    fs.readdir(directoryPath, function (err, files) {
         //error checking
         if (err) {
             return console.log('Unable to scan directory: ' + err);
-        }
-
-        //fs.appendFile('Manifest.txt',"Directory: "+directoryPath+"\n" ,function(error){}) 
-        //fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
-
-        //For every folder or directory
+        } 
         repoFolder = directoryPath;
+        currentFolder = "";
         copyFolder(directoryPath, target, repo);
-
-        repoInNew = target + '/' + repo;
+        fullPath = target + '/' + repoFolder + '/';
         inFolder = false;
-        currentFolder = repoInNew;
+        var folderStk = new Stack();
+        var folderQ = [];
 
-        files.forEach(async function (file) {
+        
+        files.forEach(function (file) {
+            if(files.isdirectory == true && !inFolder){
+                copyFolder(file,fullPath,file);
+                inFolder = true;
+                currentFolder = fullPath + file + '/';
+                folderQ.push(currentFolder);
+                folderStk.push(currentFolder);
+    
+
+            }else if(files.isdirectory == true && inFolder){
+                copyFolder(file,currentFolder,file);
+                currentFolder = currentFolder + file + '/'
+                folderQ.push(currentFolder);
+                folderStk.push(currentFolder);
+
+            }else if (!inFolder){
+                copyFile(file,fullPath, file);
+            }else{
+                copyFile(file, currentFolder, file);
+            }
+            // still need to figure out when a folder doesnt have anything 
+            //else left and pop from stk and queue and see if we are in the repo folder 
+            // or a sub folder
+        });
+    });
+};
+
+
+//Walks a folder recursively 
+// async function fileWalkCopy(directoryPath, target, repo){
+//     listofCal= [];
+    
+//     //access the folder
+//     fs.readdir(directoryPath, async function (err, files) {
+//         //error checking
+//         if (err) {
+//             return console.log('Unable to scan directory: ' + err);
+//         }
+
+//         //fs.appendFile('Manifest.txt',"Directory: "+directoryPath+"\n" ,function(error){}) 
+//         //fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
+
+//         //For every folder or directory
+//         repoFolder = directoryPath;
+//         copyFolder(directoryPath, target, repo);
+
+//         repoInNew = target + '/' + repo;
+//         inFolder = false;
+//         currentFolder = repoInNew;
+
+//         files.forEach(async function (file) {
             
 
-            //if is directory 
-            if (fs.statSync(directoryPath + "/" + file).isDirectory()) {
-                currentFolder = repoInNew + "/" + file;
+//             //if is directory 
+//             if (fs.statSync(directoryPath + "/" + file).isDirectory()) {
+//                 currentFolder = repoInNew + "/" + file;
 
-                copyFolder(directoryPath + "/" + file,currentFolder,file );
-                inFolder = true;
+//                 copyFolder(directoryPath + "/" + file,currentFolder,file );
+//                 inFolder = true;
+//                 // need to talk to john about how you know if you are in a folder / when you know you go back out of a folder
 
 
-                //walk
-                //fs.appendFile('Manifest.txt',"Directory :  "+file+"\n",function(error){})
-                //fileWalk(directoryPath + "/" + file);
+//                 //walk
+//                 //fs.appendFile('Manifest.txt',"Directory :  "+file+"\n",function(error){})
+//                 //fileWalk(directoryPath + "/" + file);
 
-            }
-            //if not a dot file get calcs
-            else if (!file.startsWith(".")) {
-                if(inFolder){
-                    copyFile(file,currentFolder);
-                }else{
-                    copyFile(file, repoInNew)
-                }
+//             }
+//             //if not a dot file get calcs
+//             else if (!file.startsWith(".")) {
+//                 if(inFolder){
+//                     copyFile(file,currentFolder);
+//                 }else{
+//                     copyFile(file, repoInNew)
+//                 }
               
 
-                //fs.appendFile('Manifest.txt',file + "     " + compute.calc(directoryPath, file)+"\n",function(error){})
-            }
-        });
+//                 //fs.appendFile('Manifest.txt',file + "     " + compute.calc(directoryPath, file)+"\n",function(error){})
+//             }
+//         });
         //fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
         //fs.appendFile('Manifest.txt',"\n\n",function(error){})
-    });
-}
+   // });
+//}
 // givens from user 
 //1- repo folder
 //2- manifest(for now basically the only manifest in the folder assuming files overwrite each other)
