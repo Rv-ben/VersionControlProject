@@ -25,7 +25,7 @@ ex.use(BodyParser.urlencoded({ extended: true }))
 //Form submittion handling 
 ex.post('/MakeRepoForm', function(req,res){
     fs.writeFile("Manifest.txt","Command Issued:  "+ req.body.cmd +"\n\n",function(error){})
-    cmdParser.parse(req.body.cmd)
-    //res.sendFile(path.join(__dirname+'/OutputTest.html'))
+    cmdParser.parse("MakeRepo "+req.body.cmd)
+    res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'))
 })
 
