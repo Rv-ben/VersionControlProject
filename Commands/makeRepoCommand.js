@@ -20,7 +20,7 @@ function makeRepo(path){
 
     //Make a repos folder if one does not exist
     if(!fs.existsSync("Repos"))
-        fs.mkdirSync("Repos")
+        createRepoDir();
     
     //Makes a new directory if one does not exist 
     if(!fs.existsSync(path))
@@ -44,6 +44,7 @@ function makeRepo(path){
     setTimeout(() => {
         var maniID = calc.calc(path+'/.versions', 'Manifest.txt')
         makeVersionJSON(versionsPath,maniID);
+        addRepoName(path.replace("Repos/",''));
     }, 1500);
     //place json file in the .versions dir
 
@@ -63,4 +64,18 @@ async function cpyManifest(directoryPath){
     fs.readFile('Manifest.txt',function(err,data){
         fs.writeFile(directoryPath+"/.versions/Manifest.txt",data,function(err){})
     })
+}
+
+function createRepoDir(){
+    fs.mkdirSync("Repos")
+    setTimeout(() => {
+        fs.writeFileSync("Repos/RepoNames.json",JSON.stringify({"Repos":[]}))
+    }, 1500);
+}
+
+function addRepoName(name){
+    var repoNames = JSON.parse(fs.readFileSync("Repos/RepoNames.json"));
+    repoNames.Repos.push(name);
+
+    fs.writeFileSync("Repos/RepoNames.json",JSON.stringify(repoNames));
 }
