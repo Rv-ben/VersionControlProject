@@ -10,7 +10,13 @@ ex.use(express.static("FrontEnd"));
 
 //Send the shell
 ex.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'));
+    frontPage(res);
+})
+
+ex.get('/repos.json',function(req,res){
+    if(fs.existsSync("./Repos/RepoNames.json"))
+        res.json(JSON.parse(fs.readFileSync("./Repos/RepoNames.json")));
+    
 })
 
 //Start server
@@ -23,9 +29,13 @@ ex.use(BodyParser.json())
 ex.use(BodyParser.urlencoded({ extended: true }))
 
 //Form submittion handling 
-ex.post('/MakeRepoForm', function(req,res){
+ex.post('', function(req,res){
     fs.writeFile("Manifest.txt","Command Issued:  "+ req.body.cmd +"\n\n",function(error){})
-    cmdParser.parse("MakeRepo "+req.body.cmd)
-    res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'))
-})
+    cmdParser.parse("MakeRepo "+req.body.cmd);
+    frontPage(res);
+});
 
+
+function frontPage(res){
+    res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'));
+}
