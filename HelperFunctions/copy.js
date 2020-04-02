@@ -26,10 +26,27 @@ function checkOut(repoFolder, targetFolder, manifest){
     // }catch(err){
     //     console.log('no such file exists');
     // }
-    fs.copySync(repoFolder, targetFolder + repoFolder, err =>{
-        if(err) return console.error(err);
-      });
-
+    if(findRepo(repoFolder,manifest) = -1){
+        console.log("repo doesn't exist")
+    }else{
+        copyDesired(findRepo(repoFolder,manifest), targetFolder);
+    }
     
 }
 
+function findRepo(directoryPath, targetMani){
+    fs.readdir(directoryPath, function (err, files) {
+        //error checking
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        } 
+        
+        files.forEach(function (file) {
+            if(files.isdirectory == true && file == targetMani){
+                return file;
+            }
+            return -1; 
+        });
+    });
+    };
+    
