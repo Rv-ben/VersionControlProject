@@ -1,5 +1,5 @@
-module.exports ={
-copy: copy
+module.exports= {
+    copy: copyDesired
 }
 
 
@@ -16,9 +16,7 @@ function moveDesired(targetFolder, whereTo){
 function copyDesired(folderToCopy, whereTo){
     const fs = require('fs-extra');
     //takes two arguements the folder in the current directory and the new directory to copy it to
-    fs.copySync(folderToCopy, whereTo + "/" + folderToCopy, err =>{
-      if(err) return console.error(err);
-    });
+    fs.copySync(folderToCopy, whereTo);
 }
 
 //
