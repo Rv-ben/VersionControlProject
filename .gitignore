@@ -109,3 +109,6 @@ dist
 
 #Stores repo folders
 /Repos
+
+#Json files
+.json
