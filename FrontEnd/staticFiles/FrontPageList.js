@@ -29,5 +29,6 @@ function refresh(){
 }
 
 function repoPage(txt){
-    window.location.replace("http://localhost:5131/RepoPage?Reponame="+txt)
+    //window.location.replace("http://localhost:5131/RepoPage?Reponame="+txt)
+    window.location.href = "http://localhost:5131/RepoPage?Reponame="+txt
 }
