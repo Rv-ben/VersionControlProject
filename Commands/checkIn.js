@@ -7,6 +7,7 @@ const fse = require('fs-extra')
 //utilizing helper functions
 var pathName = require('../HelperFunctions/pathName');
 var walking = require('../HelperFunctions/walk');
+//trying to make the JSON Version
 var version = require('./makeRepoCommand');
 //for timestamp
 let fullDate = new Date();
@@ -26,7 +27,8 @@ setTimeout(() => {
 	fs.mkdirSync(targetDir);
 	fse.copySync('../Repos/' + repoName + '/Current', targetDir);
 	fs.renameSync('../Repos/' + repoName + '/Current/' + manID, '../Repos/' + repoName + '/Current/Manifest.txt');
-	version.jsonV('../Repos/' + repoName + '/Versions/' + manID, manID);
+	//First attempt did not put the manID into the Versions.json
+	//version.jsonV('../Repos/' + repoName + '/Versions/' + manID, manID);
 }, 3000);
 
 }
