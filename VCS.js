@@ -32,7 +32,6 @@ ex.use(BodyParser.urlencoded({ extended: true }))
 ex.post('', function(req,res){
     fs.writeFile("Manifest.txt","Command Issued:  "+ req.body.cmd +"\n\n",function(error){})
     cmdParser.parse("MakeRepo "+req.body.cmd);
-    frontPage(res);
 });
 
 
