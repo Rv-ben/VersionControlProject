@@ -24,6 +24,17 @@ setTimeout(() => {
 	fs.renameSync('../Repos/' + repoName + '/Current/' + manID, '../Repos/' + repoName + '/Current/Manifest.txt');
 }, 3000);
 
+function addMan(repoName, manID){
+	var readJson = fs.readFileSync("../Repos/" + repoName + "/versions/Versions.json");
+	var data = JSON.parse(readJson);
+	
+
+	var addThis = {"ManifestID": manID , Labels : [] }
+	data.Versions[0].push(addThis);
+	fs.writeFile('../Repos/' + repoName + '/Versions/Versions.json', addThis);
+
+}
+
 }
 
 
