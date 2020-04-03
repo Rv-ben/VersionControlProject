@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 //joining path of directory rn only reads Documents and path has to be set
 var compute = require('./pathName')
-
+let date = new Date();
 module.exports= {
     walk: fileWalk
 }
@@ -37,5 +37,6 @@ function fileWalk(directoryPath){
         });
         fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
         fs.appendFile('Manifest.txt',"\n\n",function(error){})
+        fs.appendFile('Manifest.txt', date + "\n", function(error){}); 
     });
 }
