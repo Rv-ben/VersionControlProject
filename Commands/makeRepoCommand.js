@@ -1,6 +1,8 @@
 const fs = require('fs');
 const fsx = require('fs-extra')
+const express = require("express")
 
+var ex = express()
 
 var makeReep = require('../HelperFunctions/walk');
 var calc = require('../HelperFunctions/pathName');
@@ -9,6 +11,10 @@ module.exports = {
     mkrepo: makeRepo
 }
 
+
+ex.listen(5132,function(){
+
+})
 
 //Makes a repo given a path to folder as an arguument
 function makeRepo(path){
@@ -41,12 +47,19 @@ function makeRepo(path){
     fs.appendFile('Manifest.txt', rightNow + "\n", function(error){}); 
     makeReep.walk(path+"/Current");
 
+    addRepoName(path.replace("Repos/",''));
     setTimeout(() => {
         //place manifest in .versions dir
         fsx.copyFileSync(__dirname+"/../Manifest.txt",__dirname+"/../"+path+"/Current/Manifest.txt")
         var maniID = calc.calc(path+"/Current", 'Manifest.txt')
         makeVersionJSON(versionsPath,maniID);
-        addRepoName(path.replace("Repos/",''));
+        ex.get('/'+path.replace("Repos/",'')+'.json',function(req,res){
+            if(fs.existsSync(path+"/Versions/Versions.json"))
+                res.json(JSON.parse(fs.readFileSync(path+"/Versions/Versions.json")));
+            else
+                console.log("not sent")
+            
+        })
     }, 1500);
     //place json file in the .versions dir
 
@@ -59,6 +72,7 @@ function makeVersionJSON(path, maniID){
     var data = JSON.stringify(maniOBJ);
 
     fs.writeFile(path+'/Versions.json',data, function(error){});
+
 }
 
 //place a copy of the manifest in the .versions folder
