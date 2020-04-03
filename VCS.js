@@ -5,6 +5,8 @@ var ex = express();
 var BodyParser =  require('body-parser');
 var port = 5131;
 var cmdParser = require('./Commands/commandParser');
+var router = express.Router();
+
 
 ex.use(express.static("FrontEnd"));
 
@@ -19,6 +21,15 @@ ex.get('/repos.json',function(req,res){
     
 })
 
+router.param('reponame',function(req,res,next,repo){
+    if(fs.existsSync("./Repos/"+repo+"/Versions/Versions.json"))
+        res.json(JSON.parse(fs.readFileSync("./Repos/"+repo+"/Versions/Versions.json")))
+})
+
+
+router.get('/json/:reponame',function(req,res,nect){
+})
+
 ex.get('/RepoPage',function(req,res){
     res.sendFile(path.join(__dirname+"/FrontEnd/RepoPage.html"))
 })
@@ -28,9 +39,12 @@ ex.listen(port,function(){
     console.log("port:  "+port);
 })
 
+
 //Form declarations
 ex.use(BodyParser.json())
 ex.use(BodyParser.urlencoded({ extended: true }))
+
+ex.use(router)
 
 //Form submittion handling 
 ex.post('', function(req,res){
