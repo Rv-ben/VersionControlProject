@@ -7,7 +7,7 @@ function moveDesired(targetFolder, whereTo){
     const fs = require('fs-extra');
     // takes two arguements a folder to move and a destination to move to
     // both arguements should be strings
-    fs.moveSync(targetFolder, whereTo + targetFolder, (err) => {
+    fs.moveSync(targetFolder, whereTo + "/"  + targetFolder, (err) => {
         //if there is an error anywhere in the process display said error 
         if(err) return console.error(err);
       });
@@ -16,7 +16,7 @@ function moveDesired(targetFolder, whereTo){
 function copyDesired(folderToCopy, whereTo){
     const fs = require('fs-extra');
     //takes two arguements the folder in the current directory and the new directory to copy it to
-    fs.copySync(folderToCopy, whereTo + folderToCopy, err =>{
+    fs.copySync(folderToCopy, whereTo + "/" + folderToCopy, err =>{
       if(err) return console.error(err);
     });
 }
