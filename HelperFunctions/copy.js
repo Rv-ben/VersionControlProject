@@ -1,3 +1,7 @@
+module.exports ={
+copy: copy
+}
+
 
 function moveDesired(targetFolder, whereTo){
     const fs = require('fs-extra');
