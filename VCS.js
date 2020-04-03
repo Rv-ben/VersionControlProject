@@ -19,6 +19,10 @@ ex.get('/repos.json',function(req,res){
     
 })
 
+ex.get('/RepoPage',function(req,res){
+    res.sendFile(path.join(__dirname+"/FrontEnd/RepoPage.html"))
+})
+
 //Start server
 ex.listen(port,function(){
     console.log("port:  "+port);
