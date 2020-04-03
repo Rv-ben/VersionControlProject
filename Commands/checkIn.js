@@ -16,7 +16,7 @@ var newManifest = walking.walk(checkInFile);
 ////var sum = fileConfig.calculations(newDirectory);
 
 
-////rename current
+////rename current folder
 // fs.rename(currPath, newPath, function(err) {
 // 	if (err) {
 // 	  console.log(err)
@@ -34,6 +34,19 @@ var newManifest = walking.walk(checkInFile);
 ////copy repo folder from check in into current
 //
 ////
+
+
+//////////////////
+//repo:
+	///current:
+		///manifest2
+		//files/folders ... 
+	///previous versions:
+		//manifest1 id
+			//manifest 
+			// files/ folders...
+		
+
 
 //increment the versionCount and return new manifest
 	versionCount += 1;
