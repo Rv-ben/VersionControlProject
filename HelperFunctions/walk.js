@@ -9,11 +9,11 @@ module.exports= {
 }
 
 //Walks a folder recursively 
-async function fileWalk(directoryPath){
+function fileWalk(directoryPath){
     listofCal= [];
     
     //access the folder
-    fs.readdir(directoryPath, async function (err, files) {
+    fs.readdir(directoryPath, function (err, files) {
         //error checking
         if (err) {
             return console.log('Unable to scan directory: ' + err);
@@ -23,7 +23,7 @@ async function fileWalk(directoryPath){
         fs.appendFile('Manifest.txt',"--------------------------------\n",function(error){})
 
         //For every folder or directory
-        files.forEach(async function (file) {
+        files.forEach(function (file) {
             //if is directory 
             if (fs.statSync(directoryPath + "/" + file).isDirectory()) {
                 //walk
