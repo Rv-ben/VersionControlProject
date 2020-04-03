@@ -8,7 +8,8 @@ var makeReep = require('../HelperFunctions/walk');
 var calc = require('../HelperFunctions/pathName');
 
 module.exports = {
-    mkrepo: makeRepo
+    mkrepo: makeRepo,
+    jsonV: makeVersionJSON
 }
 
 
