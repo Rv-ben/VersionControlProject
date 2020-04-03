@@ -46,7 +46,24 @@ div.holder:hover{
     background-color: white;
 }
 
+
 button{
     color: salmon;
     background-color: beige;
+}
+
+button.checkin{
+    scale: 150%
+}
+
+form.Label{
+  background-color:  salmon;
+}
+div.Actions{
+    float: left;
+    margin-left: 10%;
+}
+div.Actions1{
+    float: left;
+    margin-left: 10%;
 }
