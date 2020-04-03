@@ -13,10 +13,32 @@ function checkIn(checkInFile, previousVersionSize){
 var oldSize = fileConfig.calculations(previousVersionSize);
 var newManifest = walking.walk(checkInFile);
 //calculate size of manifest from previous version to check for changes being pushed
-var sum = fileConfig.calculations(newDirectory);
+////var sum = fileConfig.calculations(newDirectory);
+
+
+////rename current
+// fs.rename(currPath, newPath, function(err) {
+// 	if (err) {
+// 	  console.log(err)
+// 	}
+//// })
+
+////move newly renamed directory to previous versons folder
+//moveDesires(current, previousVersions + "/" + current);
+////
+
+////create new folder named current in place of old one
+//
+////
+
+////copy repo folder from check in into current
+//
+////
 
 //increment the versionCount and return new manifest
 	versionCount += 1;
 	return sum;
+
+
 }
 

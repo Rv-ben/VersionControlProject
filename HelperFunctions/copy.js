@@ -31,7 +31,7 @@ function checkOut(repoFolder, targetFolder, manifest){
     }else{
         copyDesired(findRepo(repoFolder,manifest), targetFolder);
     }
-    
+
 }
 
 function findRepo(directoryPath, targetMani){
