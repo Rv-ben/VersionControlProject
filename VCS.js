@@ -5,6 +5,7 @@ var ex = express();
 var BodyParser =  require('body-parser');
 var port = 5131;
 var cmdParser = require('./Commands/commandParser');
+var artID = require('./HelperFunctions/pathName')
 var router = express.Router();
 var URL = require('url');
 
@@ -57,9 +58,18 @@ ex.post('', function(req,res){
 function frontPage(res){
     res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'));
 }
-
+/*
 ex.post('', function(req){
     var addr = req.protocol + "://" + req.headers.host;
     var spq = URL.parse(addr, true);
     cmdParser.parse("CheckIn " + spq.query);
 });
+
+ex.post('', function(req,res){
+    var addr = req.protocol + "://" + req.headers.host;
+    var spq = URL.parse(addr, true);
+    //fs.writeFile("Manifest.txt","Command Issued:  "+ req.body.cmd +"\n\n",function(error){})
+    cmdParser.parse("Label " + req.body.cmd + " " + spq.query + " " + "Manifest.txt");
+
+});
+*/

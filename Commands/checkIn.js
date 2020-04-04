@@ -9,7 +9,7 @@ var pathName = require('../HelperFunctions/pathName');
 var walking = require('../HelperFunctions/walk');
 
 //need to pull current repo name
-var repoName = 'repoNameHere';
+var repoName = 'newerRepo';
 checkIn(repoName);
 
 function checkIn(repoName){
@@ -22,6 +22,7 @@ setTimeout(() => {
 	fs.mkdirSync(targetDir);
 	fse.copySync('../Repos/' + repoName + '/Current', targetDir);
 	fs.renameSync('../Repos/' + repoName + '/Current/' + manID, '../Repos/' + repoName + '/Current/Manifest.txt');
+	//addMan(repoName, manID);
 }, 3000);
 
 function addMan(repoName, manID){
