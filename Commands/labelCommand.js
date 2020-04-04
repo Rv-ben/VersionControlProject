@@ -10,7 +10,7 @@ module.exports = {
 //returns 0 if correctly labeled
 //returns 1 if repo does not exist
 //returns 2 if manifest does not exist
-function labelManifest(lString,repoName,manName){
+function labelManifest(lString, repoName ,manName){
     
     //return if not a repo
     if(!fs.existsSync(repoName)){

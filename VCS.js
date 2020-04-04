@@ -59,7 +59,7 @@ function frontPage(res){
     res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'));
 }
 /*
-ex.post('', function(req){
+ex.post('', function(req, res){
     var addr = req.protocol + "://" + req.headers.host;
     var spq = URL.parse(addr, true);
     cmdParser.parse("CheckIn " + spq.query);
