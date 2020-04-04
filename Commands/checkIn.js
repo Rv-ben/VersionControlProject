@@ -30,7 +30,7 @@ function addMan(repoName, manID){
 	
 
 	var addThis = {"ManifestID": manID , Labels : [] }
-	data.Versions[0].push(addThis);
+	data.Versions.push(addThis);
 	fs.writeFile('../Repos/' + repoName + '/Versions/Versions.json', addThis);
 
 }
