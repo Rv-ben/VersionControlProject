@@ -6,6 +6,7 @@ var BodyParser =  require('body-parser');
 var port = 5131;
 var cmdParser = require('./Commands/commandParser');
 var router = express.Router();
+var URL = require('url');
 
 
 ex.use(express.static("FrontEnd"));
@@ -56,3 +57,9 @@ ex.post('', function(req,res){
 function frontPage(res){
     res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'));
 }
+
+ex.post('', function(req){
+    var addr = req.protocol + "://" + req.headers.host;
+    var spq = URL.parse(addr, true);
+    cmdParser.parse("CheckIn " + spq.query);
+});
