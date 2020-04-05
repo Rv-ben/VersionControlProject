@@ -39,10 +39,10 @@ function checkOut(repoFolder, targetFolder, manifest){
 
 
 // // if error happens probably happens here
-var directoryPath = "../Repos/newerRepo/";
-var targetMani = "P3636L600C5288";
-var targetFol ="../testCheckOut";
-checkOut(directoryPath, targetFol, targetMani);
+// var directoryPath = "../Repos/newerRepo/";
+// var targetMani = "P3636L600C5288";
+// var targetFol ="../testCheckOut";
+// checkOut(directoryPath, targetFol, targetMani);
 // console.log(findRepo(directoryPath, targetMani));
 
 // function findRepo(directoryPath, targetMani){

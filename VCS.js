@@ -58,13 +58,14 @@ ex.post('', function(req,res){
 function frontPage(res){
     res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'));
 }
-/*
+
 ex.post('./checkIn', function(req, res){
     var addr = req.protocol + "://" + req.headers.host;
     var spq = URL.parse(addr, true);
+    console.log(spq.query);
     cmdParser.parse("CheckIn " + spq.query);
 });
-
+/*
 ex.post('', function(req,res){
     var addr = req.protocol + "://" + req.headers.host;
     var spq = URL.parse(addr, true);
