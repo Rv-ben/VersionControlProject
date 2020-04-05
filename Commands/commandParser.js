@@ -2,7 +2,7 @@
 var mrc = require("./makeRepoCommand");
 var lr = require("./labelCommand");
 var checkIn = require("./checkIn");
-var checkOut = require("./checkOut")
+var checkOut = require("../HelperFunctions/copy")
 
 module.exports = {
     parse: parseCMD
