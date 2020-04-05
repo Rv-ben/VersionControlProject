@@ -9,8 +9,8 @@ var pathName = require('../HelperFunctions/pathName');
 var walking = require('../HelperFunctions/walk');
 
 //need to pull current repo name
- var repoName = 'newerRepo';
- checkIn(repoName);
+ //var repoName = 'newerRepo';
+ //checkIn(repoName);
 
 function checkIn(repoName){
 walking.walk('../Repos/' + repoName + '/Current');
