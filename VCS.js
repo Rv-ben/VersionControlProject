@@ -65,6 +65,16 @@ ex.post('./checkIn', function(req, res){
     console.log(spq.query);
     cmdParser.parse("CheckIn " + spq.query);
 });
+//repoFolder, targetFolder, manifest
+ex.post('./checkOut', function(req, res){
+    var targetLoca = req.body.cmd;
+    var targetMan = req.body.cmd;
+    var addr = req.protocol + "://" + req.headers.host;
+    var spq = URL.parse(addr, true);
+    
+    cmdParser.parse("CheckOut " + spq + " " + targetLoca+ " " + targetMan);
+
+});
 
 ex.post('./labelCommand', function(req,res){
     var addr = req.protocol + "://" + req.headers.host;
