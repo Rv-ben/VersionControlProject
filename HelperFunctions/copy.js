@@ -1,5 +1,6 @@
 module.exports= {
-    copy: copyDesired
+    copy: copyDesired,
+    check: checkOut
 }
 var check = require("../Commands/checkIn")
 var walking = require('../HelperFunctions/walk');
