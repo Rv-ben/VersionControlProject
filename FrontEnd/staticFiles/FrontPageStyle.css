@@ -56,6 +56,10 @@ button.checkin{
     scale: 150%
 }
 
+button.checkout{
+    scale: 150%
+}
+
 form.Label{
   background-color:  salmon;
 }
