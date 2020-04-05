@@ -65,13 +65,8 @@ ex.post('./checkIn', function(req, res){
     console.log(spq.query);
     cmdParser.parse("CheckIn " + spq.query);
 });
-<<<<<<< HEAD
-/*
-ex.post('', function(req,res){
-=======
 
 ex.post('./labelCommand', function(req,res){
->>>>>>> c0c3160eba61c766302416ea7cd93116aef67125
     var addr = req.protocol + "://" + req.headers.host;
     var spq = URL.parse(addr, true);
     cmdParser.parse("Label " + req.body.cmd + " " + spq.query + " " + "Manifest.txt");
