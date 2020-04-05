@@ -9,8 +9,8 @@ var pathName = require('../HelperFunctions/pathName');
 var walking = require('../HelperFunctions/walk');
 
 //need to pull current repo name
-//var repoName = 'newerRepo';
-//checkIn(repoName);
+var repoName = 'newerRepo';
+checkIn(repoName);
 
 function checkIn(repoName){
 walking.walk('../Repos/' + repoName + '/Current');
@@ -22,17 +22,16 @@ setTimeout(() => {
 	fs.mkdirSync(targetDir);
 	fse.copySync('../Repos/' + repoName + '/Current', targetDir);
 	fs.renameSync('../Repos/' + repoName + '/Current/' + manID, '../Repos/' + repoName + '/Current/Manifest.txt');
-	//addMan(repoName, manID);
+	addMan(repoName, manID);
 }, 3000);
 
 function addMan(repoName, manID){
 	var readJson = fs.readFileSync("../Repos/" + repoName + "/versions/Versions.json");
 	var data = JSON.parse(readJson);
-	
-
-	var addThis = {"ManifestID": manID , Labels : [] }
+	var addThis = {"ManifestID": manID , Labels : [] };
 	data.Versions.push(addThis);
-	fs.writeFile('../Repos/' + repoName + '/Versions/Versions.json', addThis);
+	var newestThis = JSON.stringify(addThis)
+	//fs.writeFile('../Repos/' + repoName + '/Versions/Versions.json', newestThis, function(error){});
 
 }
 
