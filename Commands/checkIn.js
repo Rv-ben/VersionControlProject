@@ -28,7 +28,7 @@ setTimeout(() => {
 function addMan(repoName, manID){
 	var readJson = fs.readFileSync("../Repos/" + repoName + "/versions/Versions.json");
 	var data = JSON.parse(readJson);
-
+	
 	console.log(data);
 	addThis = {"ManifestID": manID , Labels : []};
 	data.Versions.push(addThis);
