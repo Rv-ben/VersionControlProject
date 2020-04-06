@@ -79,6 +79,6 @@ ex.post('/checkOut', function(req, res){
 ex.post('/labelCommand', function(req,res){
 
 
-    cmdParser.parse("Label " + req.body.cmd + " " + req.body.repo + " " + "Manifest.txt");
+    cmdParser.parse("Label " + req.body.newLabel + " " + req.body.repo + " " + req.body.oldLabel);
 
 });

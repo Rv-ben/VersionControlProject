@@ -13,7 +13,7 @@ module.exports = {
 function labelManifest(lString, repoName ,manName){
     
     //return if not a repo
-    if(!fs.existsSync(repoName)){
+    if(!fs.existsSync(__dirname+"/../Repos/"+repoName)){
         console.log("Repo does not exist");
         return 1;
     }
