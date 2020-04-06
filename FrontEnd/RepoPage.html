@@ -16,14 +16,16 @@
     <div class = "Actions">
       <form action="/labelCommand" method="post" class="Label">
         <button type="submit">Label </button>
-        <input type="text" placeholder="New Label" name="cmd">
-        <input type="text" placeholder="Old Label/Manifest ID" name="cmd">
+        <input type="text" placeholder="New Label" name="newLabel">
+        <input type="text" placeholder="Old Label/Manifest ID" name="oldLabel">
+        <input type="hidden" id = "labelRepo" value="" name="repo">
       </form>
     </div>
 
     <div class="Actions">
       <form action="/checkIn" method="post" class="Label">
         <button type="submit">Check in</button>
+        <input type = "hidden" id = "checkInRepo" value="" name = "repo">
       </form>
     </div>
 
@@ -32,7 +34,7 @@
         <button type="submit">Check out</button>
         <input type="text" placeholder="Target Directory" name="dir">
         <input type="text" placeholder="Manifest" name="man">
-        <input type="hidden" name = "repo" value="" id="checkInRepo">
+        <input type="hidden" name = "repo" value="" id="checkOutRepo">
       </form>
     </div>
 

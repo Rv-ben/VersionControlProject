@@ -60,10 +60,10 @@ function frontPage(res){
 }
 
 ex.post('/checkIn', function(req, res){
-    var addr = req.protocol + "://" + req.headers.host;
-    var spq = URL.parse(addr, true);
-    console.log(spq.query);
-    cmdParser.parse("CheckIn " + spq.query);
+
+    console.log(req.body.repo)
+    
+    cmdParser.parse("CheckIn " + req.body.repo);
 });
 //repoFolder, targetFolder, manifest
 ex.post('/checkOut', function(req, res){
@@ -77,8 +77,8 @@ ex.post('/checkOut', function(req, res){
 });
 
 ex.post('/labelCommand', function(req,res){
-    var addr = req.protocol + "://" + req.headers.host;
-    var spq = URL.parse(addr, true);
-    cmdParser.parse("Label " + req.body.cmd + " " + spq.query + " " + "Manifest.txt");
+
+
+    cmdParser.parse("Label " + req.body.cmd + " " + req.body.repo + " " + "Manifest.txt");
 
 });
