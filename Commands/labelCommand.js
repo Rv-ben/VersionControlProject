@@ -19,7 +19,7 @@ function labelManifest(lString, repoName ,manName){
     }
     
     //read json file in versions folder
-    var versionsData = fs.readFileSync(repoName+"/.versions/Versions.json");
+    var versionsData = fs.readFileSync(__dirname+"/../Repos/" +repoName+"/Versions/Versions.json");
 
     //parse the json info into an object 
     var dataObject = JSON.parse(versionsData);
@@ -40,7 +40,7 @@ function labelManifest(lString, repoName ,manName){
     var newJsonData = JSON.stringify(dataObject);
 
     //over wrire the file 
-    fs.writeFileSync(repoName+"/.versions/Versions.json",newJsonData);
+    fs.writeFileSync(__dirname+"/../Repos/" +repoName+"/Versions/Versions.json",newJsonData);
 
     return 0;
 }

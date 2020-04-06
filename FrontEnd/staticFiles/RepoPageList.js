@@ -27,5 +27,10 @@ window.onload = function(){
 
         document.getElementById("repoNames").appendChild(listItem);
     });
-})
+
+    document.getElementById('checkInRepo').value = repo;
+    document.getElementById('checkOutRepo').value = repo;
+    document.getElementById('labelRepo').value = repo;
+
+    })
 }

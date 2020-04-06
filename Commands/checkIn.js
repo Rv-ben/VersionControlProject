@@ -13,28 +13,28 @@ var walking = require('../HelperFunctions/walk');
 //checkIn(repoName);
 
 function checkIn(repoName){
-walking.walk('../Repos/' + repoName + '/Current');
+walking.walk(__dirname+'/../Repos/' + repoName + '/Current');
 setTimeout(() => {
 	fse.copySync("Manifest.txt","../Repos/" + repoName + "/Current/Manifest.txt");
-	var manID = pathName.calc('../Repos/' + repoName + '/Current', 'Manifest.txt');
-	fs.renameSync('../Repos/' + repoName + '/Current/Manifest.txt' , '../Repos/' + repoName + '/Current/' + manID);
-	var targetDir = '../Repos/' + repoName + '/Versions/' + manID.replace(".txt", "");
+	var manID = pathName.calc(__dirname+'/../Repos/' + repoName + '/Current', 'Manifest.txt');
+	fs.renameSync(__dirname+'/../Repos/' + repoName + '/Current/Manifest.txt' , __dirname+'/../Repos/' + repoName + '/Current/' + manID);
+	var targetDir = __dirname+'/../Repos/' + repoName + '/Versions/' + manID.replace(".txt", "");
 	fs.mkdirSync(targetDir);
-	fse.copySync('../Repos/' + repoName + '/Current', targetDir);
-	fs.renameSync('../Repos/' + repoName + '/Current/' + manID, '../Repos/' + repoName + '/Current/Manifest.txt');
+	fse.copySync(__dirname+'/../Repos/' + repoName + '/Current', targetDir);
+	fs.renameSync(__dirname+'/../Repos/' + repoName + '/Current/' + manID, __dirname+'/../Repos/' + repoName + '/Current/Manifest.txt');
 	addMan(repoName, manID);
 }, 3000);
 
 function addMan(repoName, manID){
-	var readJson = fs.readFileSync("../Repos/" + repoName + "/versions/Versions.json");
+	var readJson = fs.readFileSync("../Repos/" + repoName + "/Versions/Versions.json");
 	var data = JSON.parse(readJson);
 	
-	console.log(data);
+	//console.log(data);
 	addThis = {"ManifestID": manID , Labels : []};
 	data.Versions.push(addThis);
-	console.log(data);
+	//console.log(data);
 	addToFile = JSON.stringify(data);
-	fs.writeFile('../Repos/' + repoName + '/Versions/Versions.json', addToFile, function(error){});
+	fs.writeFile(__dirname+'/../Repos/' + repoName + '/Versions/Versions.json', addToFile, function(error){});
 
 
 }

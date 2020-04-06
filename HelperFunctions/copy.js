@@ -25,10 +25,10 @@ function copyDesired(folderToCopy, whereTo){
 function checkOut(repoFolder, targetFolder, manifest){
 
     if(repoFolder + "Versions/" + manifest.isDirectory){
-        fs.copySync('../Repos/' + repoFolder, targetFolder);
+        fs.copySync(__dirname+'/../Repos/' + repoFolder, targetFolder);
         walking.walk(targetFolder);
     }else if (manifest ==  "Manifest"){
-        fs.copySync('../Repos/' + repoFolder, targetFolder );
+        fs.copySync(__dirname+'/../Repos/' + repoFolder, targetFolder );
     }else{
         console.log("maifest didnt exist")
     }

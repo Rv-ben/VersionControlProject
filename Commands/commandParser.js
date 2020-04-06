@@ -12,9 +12,10 @@ module.exports = {
 function parseCMD(str){
     
     //sperate the cmd and args
-    var cmd = splitWhiteSpace(str)
+    var cmd = str.split(" ");
     if(cmd[1] != undefined)
 
+        console.log("Cmd issued: "+cmd[1]+" "+cmd[2]+" ");
         //List of commands 
         switch(cmd[0]){
             case "MakeRepo": mrc.mkrepo(cmd[1]); break;
@@ -28,15 +29,15 @@ function parseCMD(str){
 //Seperate strings, returns list of strings
 function splitWhiteSpace(str){
     //find the amount of whiteSpaces
-    
-    var previousWhiteSpace;
+    console.log("In white split: "+str)
+    var previousWhiteSpace =0;
     var cmdArgs =[];
     var elementCount = 0;
 
     for(var i = 0; i<str.length ; i++){
         if(str[i] == ' '){
             cmdArgs[elementCount] = str.substr(previousWhiteSpace,i);
-            previousWhiteSpace=i+1;
+            previousWhiteSpace=i;
             elementCount++;
         }  
     } 

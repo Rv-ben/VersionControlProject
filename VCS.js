@@ -59,26 +59,26 @@ function frontPage(res){
     res.sendFile(path.join(__dirname+'/FrontEnd/FrontPage.html'));
 }
 
-ex.post('./checkIn', function(req, res){
-    var addr = req.protocol + "://" + req.headers.host;
-    var spq = URL.parse(addr, true);
-    console.log(spq.query);
-    cmdParser.parse("CheckIn " + spq.query);
+ex.post('/checkIn', function(req, res){
+
+    console.log(req.body.repo)
+    
+    cmdParser.parse("CheckIn " + req.body.repo);
 });
 //repoFolder, targetFolder, manifest
-ex.post('./checkOut', function(req, res){
-    var targetLoca = req.body.cmd;
-    var targetMan = req.body.cmd;
-    var addr = req.protocol + "://" + req.headers.host;
-    var spq = URL.parse(addr, true);
+ex.post('/checkOut', function(req, res){
+    var targetLoca = req.body.dir;
+    var targetMan = req.body.man;
+    var repoName = req.body.repo;
+
     
-    cmdParser.parse("CheckOut " + spq + " " + targetLoca+ " " + targetMan);
+    cmdParser.parse("CheckOut " + repoName+ " " + targetLoca+ " " + targetMan);
 
 });
 
-ex.post('./labelCommand', function(req,res){
-    var addr = req.protocol + "://" + req.headers.host;
-    var spq = URL.parse(addr, true);
-    cmdParser.parse("Label " + req.body.cmd + " " + spq.query + " " + "Manifest.txt");
+ex.post('/labelCommand', function(req,res){
+
+
+    cmdParser.parse("Label " + req.body.cmd + " " + req.body.repo + " " + "Manifest.txt");
 
 });
