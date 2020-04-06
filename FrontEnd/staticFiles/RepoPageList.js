@@ -27,5 +27,8 @@ window.onload = function(){
 
         document.getElementById("repoNames").appendChild(listItem);
     });
-})
+
+    document.getElementById('checkInRepo').value = repo;
+    
+    })
 }

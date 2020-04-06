@@ -67,12 +67,12 @@ ex.post('/checkIn', function(req, res){
 });
 //repoFolder, targetFolder, manifest
 ex.post('/checkOut', function(req, res){
-    var targetLoca = req.body.cmd;
-    var targetMan = req.body.cmd;
-    var addr = req.protocol + "://" + req.headers.host;
-    var spq = URL.parse(addr, true);
+    var targetLoca = req.body.dir;
+    var targetMan = req.body.man;
+    var repoName = req.body.repo;
+
     
-    cmdParser.parse("CheckOut " + spq + " " + targetLoca+ " " + targetMan);
+    cmdParser.parse("CheckOut " + repoName+ " " + targetLoca+ " " + targetMan);
 
 });
 
