@@ -10,6 +10,7 @@ module.exports= {
 
 //Walks a folder recursively 
 function fileWalk(directoryPath){
+
     listofCal= [];
     
     //access the folder

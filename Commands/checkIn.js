@@ -13,20 +13,40 @@ var walking = require('../HelperFunctions/walk');
  //checkIn(repoName);
 
 function checkIn(repoName){
-walking.walk(__dirname+'/../Repos/' + repoName + '/Current');
+
+	var vcsPath = __dirname+"/../"
+
+walking.walk(vcsPath+ 'Repos/'+ repoName + '/Current');
+
 setTimeout(() => {
-	fse.copySync("Manifest.txt","../Repos/" + repoName + "/Current/Manifest.txt");
-	var manID = pathName.calc(__dirname+'/../Repos/' + repoName + '/Current', 'Manifest.txt');
-	fs.renameSync(__dirname+'/../Repos/' + repoName + '/Current/Manifest.txt' , __dirname+'/../Repos/' + repoName + '/Current/' + manID);
-	var targetDir = __dirname+'/../Repos/' + repoName + '/Versions/' + manID.replace(".txt", "");
+	//Copy mani from vcs to current
+	fse.copySync(vcsPath+"Manifest.txt",vcsPath+"Repos/" + repoName + "/Current/Manifest.txt");
+
+	//calc manID 
+	var manID = pathName.calc(vcsPath+'Repos/' + repoName + '/Current', 'Manifest.txt');
+
+	//Rename mani in current to new man name
+	fs.renameSync(vcsPath+'Repos/' + repoName + '/Current/Manifest.txt' , vcsPath+'Repos/' + repoName + '/Current/' + manID);
+
+	//Strip the dot text
+	var targetDir = vcsPath+'Repos/' + repoName + '/Versions/' + manID.replace(".txt", "");
+
+	//make make the new snapshot folder
 	fs.mkdirSync(targetDir);
-	fse.copySync(__dirname+'/../Repos/' + repoName + '/Current', targetDir);
-	fs.renameSync(__dirname+'/../Repos/' + repoName + '/Current/' + manID, __dirname+'/../Repos/' + repoName + '/Current/Manifest.txt');
+
+	//Get everything in current and place in new snapshot
+	fse.copySync(vcsPath+'Repos/' + repoName + '/Current', targetDir);
+
+	//Rename file that is copied over 
+	fs.renameSync(vcsPath+'Repos/' + repoName + '/Current/' + manID, vcsPath+'Repos/' + repoName + '/Current/Manifest.txt');
+
 	addMan(repoName, manID);
 }, 3000);
 
 function addMan(repoName, manID){
-	var readJson = fs.readFileSync("../Repos/" + repoName + "/Versions/Versions.json");
+
+	var vcsPath = __dirname+"/../";
+	var readJson = fs.readFileSync( vcsPath+"Repos/" + repoName + "/Versions/Versions.json");
 	var data = JSON.parse(readJson);
 	
 	//console.log(data);
@@ -34,7 +54,7 @@ function addMan(repoName, manID){
 	data.Versions.push(addThis);
 	//console.log(data);
 	addToFile = JSON.stringify(data);
-	fs.writeFile(__dirname+'/../Repos/' + repoName + '/Versions/Versions.json', addToFile, function(error){});
+	fs.writeFile(vcsPath+'Repos/' + repoName + '/Versions/Versions.json', addToFile, function(error){});
 
 
 }
