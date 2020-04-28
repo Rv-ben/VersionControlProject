@@ -26,11 +26,32 @@ window.onload = function(){
         textholder.setAttribute('onclick',"repoPage(this.childNodes[0].innerText)")
 
         document.getElementById("repoNames").appendChild(listItem);
-    });
 
+        snapshot.labels.forEach(label => {
+            listItem = document.createElement("div",{class:"listItem"});
+
+            textholder = document.createElement("div");
+            textholder.className ="holder";
+
+            repo = document.createElement("p",{class: "name"});
+        
+            repo.innerText = label;
+
+            listItem.append(textholder);
+            textholder.append(repo);
+
+            textholder.setAttribute('onclick',"repoPage(this.childNodes[0].innerText)")
+
+            document.getElementById("repoNames").appendChild(listItem);
+        })
+
+        textholder.setAttribute('onclick',"repoPage(this.childNodes[0].innerText)")
+
+        document.getElementById("repoNames").appendChild(listItem);
+    });
+    })
     document.getElementById('checkInRepo').value = repo;
     document.getElementById('checkOutRepo').value = repo;
     document.getElementById('labelRepo').value = repo;
 
-    })
 }
