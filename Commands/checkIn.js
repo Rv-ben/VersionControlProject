@@ -12,6 +12,10 @@ var walking = require('../HelperFunctions/walk');
 //var repoName = 'newerRepo';
 //checkIn(repoName);
 
+/**
+ * Function for checking in file into VCS.
+ * @param {String} repoName Name of the repository to be checked in.
+ */
 function checkIn(repoName){
 
 	var vcsPath = __dirname+"/../"
@@ -43,6 +47,11 @@ setTimeout(() => {
 	addMan(repoName, manID);
 }, 3000);
 
+/**
+ * Function that adds the manifest into the VCS, called from checkIn
+ * @param {String} repoName Name of the repository where the manifest will be added.
+ * @param {Number} manID Identification number for manifest
+ */
 function addMan(repoName, manID){
 
 	var vcsPath = __dirname+"/../";
