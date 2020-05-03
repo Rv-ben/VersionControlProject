@@ -17,6 +17,11 @@ ex.listen(5132,function(){
 })
 
 //Makes a repo given a path to folder as an arguument
+
+/*
+ * Create repository from path given.
+ * @param {String} path Path to the repository.
+ */
 function makeRepo(path){
 
     path = "Repos/"+path;
@@ -65,7 +70,9 @@ function makeRepo(path){
 
 }
 
-
+/*
+ * ?
+ */
 function makeVersionJSON(path, maniID){
     var maniOBJ = {Versions:[{ManifestID: maniID , labels:[]}]}
 
@@ -76,6 +83,11 @@ function makeVersionJSON(path, maniID){
 }
 
 //place a copy of the manifest in the .versions folder
+
+/*
+ * Places copy of the manifest in the versions folder.
+ * @param {String} directoryPath Path to the directory.
+ */
 async function cpyManifest(directoryPath){
     console.log(directoryPath);
     fs.readFileSync(__dirname+'/../Manifest.txt',function(err,data){
@@ -87,6 +99,9 @@ async function cpyManifest(directoryPath){
     })
 }
 
+/*
+ * Create directory to a repository.
+ */
 function createRepoDir(){
     fs.mkdirSync("Repos")
     setTimeout(() => {
@@ -94,6 +109,10 @@ function createRepoDir(){
     }, 1500);
 }
 
+/*
+ * Add name to the repository.
+ * @param {String} name Name for the repository.
+ */
 function addRepoName(name){
     var repoNames = JSON.parse(fs.readFileSync("Repos/RepoNames.json"));
     repoNames.Repos.push(name);
