@@ -10,6 +10,13 @@ module.exports = {
 //returns 0 if correctly labeled
 //returns 1 if repo does not exist
 //returns 2 if manifest does not exist
+/*
+ * Function to give label to a manifest.
+ * @param {String} lString New label for manifest.
+ * @param {String} repoName Name of repository where manifest exists.
+ * @param {String} manName Current name of manifest.
+ * @return {Number} 0 if manifest is correctly labeled, 1 if repo does not exist, 2 if manifest does not exist.
+ */
 function labelManifest(lString, repoName ,manName){
     
     //return if not a repo
@@ -47,6 +54,13 @@ function labelManifest(lString, repoName ,manName){
 
 //return -1 if not found 
 //return index if found 
+
+/*
+ * Function used to search for manifest
+ * @param {String} manName Name of manifest to search for.
+ * @param {List} versionsObj List of versions that the manifest has had.
+ * @return {Number} Index if found, -1 if the manifest was not found.
+ */
 function findManifest(manName,versionsObj){
     for(var i = 0; i< versionsObj.length ;i++){
 
