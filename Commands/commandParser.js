@@ -9,6 +9,10 @@ module.exports = {
 }
 
 //Parse and Interpret Commands
+/**
+ * Function that reads from command line and parses input.
+ * @param {String} str String read into command line.
+ */
 function parseCMD(str){
     
     //sperate the cmd and args
@@ -27,6 +31,11 @@ function parseCMD(str){
 }   
 
 //Seperate strings, returns list of strings
+/**
+ * Function used to split commands by white space.
+ * @param {String} str String to be seperated by white space.
+ * @return {List} cmdArgs List of command arguments seperated by string read in by white space.
+ */
 function splitWhiteSpace(str){
     //find the amount of whiteSpaces
     console.log("In white split: "+str)
