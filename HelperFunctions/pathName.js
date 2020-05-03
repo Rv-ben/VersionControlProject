@@ -3,7 +3,10 @@
 
 module.exports = {
     calc: calculations,
-    renameFile:renameFile
+    renameFile:renameFile,
+    len:calculateFileLength,
+    fileSz:calculateFileSize
+
 }
 
 // works as expected
