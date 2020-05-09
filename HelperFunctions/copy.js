@@ -32,7 +32,10 @@ function copyDesired(folderToCopy, whereTo){
 }
 
 /*
- * Puts manifest from 
+ * Copies a snapshot of a project tree into a target folder specified by the user should be an empty folder
+ * @param repoFolder, current repository folder of snapshot.
+ * @param targetFolder, new folder for snapshot to be copied into.
+ * @param manifest, the manifest that will be copied over.
  */
 function checkOut(repoFolder, targetFolder, manifest){
 
