@@ -9,7 +9,11 @@ module.exports = {
 
 }
 
-// works as expected
+/*
+ * Calculates the sum of all characters in the string given.
+ * @param stringName, a string that the user would like to calculate the sum of characters on.
+ * @return sum, the sum of the string.
+ */
 function calculateStringSum(stringName){
     var sum = 0;
     var multiplier = 1;
@@ -32,6 +36,11 @@ function calculateStringSum(stringName){
     return sum;
 }
 
+/*
+ * Calculates the size of a file from an array of a file.
+ * @param arrayOfFile, file in array form to calculate size.
+ * @return sum, the sum of the file size.
+ */
 function calculateFileSize(arrayOfFile){// paramater needs to be an array
     var sum = 0;
     var multiplier = 1; 
@@ -56,7 +65,12 @@ function calculateFileSize(arrayOfFile){// paramater needs to be an array
     sum = sum % 10000;
     return sum;
 }
-// works on everything
+
+/*
+ * Calculates length of a file from array of file.
+ * @param arrayOfFile, file in array form to calculate size.
+ * @return count, the count of the file length.
+ */
 function calculateFileLength(arrayOfFile){
     var count = 0;
     for(i = 0; i < arrayOfFile.length; i++){
@@ -68,6 +82,12 @@ function calculateFileLength(arrayOfFile){
 
 
 // only function that needs to be used from this class for outsiders  
+/*
+ * Function that will do calculations from prior functions on a specified file.
+ * @param fullPath, the path of the file in string form.
+ * @param fileName, the name of a file in string form.
+ * @return newName, the new name of the file with the calculations.
+ */
 function calculations(fullPath, fileName){
 
     var fs = require('fs');
@@ -87,8 +107,11 @@ function calculations(fullPath, fileName){
     return newName;
 }
 
-// function to rename a file to the correct format
-// requires two strings first the old file name and second the new file name
+/*
+ * Function to rename a file to the correct format.
+ * @param currFileName, the current name of the file in string form.
+ * @param newName, the new name of the file.
+ */
 function renameFile(currFileName, newName){
     var fs = require('fs');
     try{
