@@ -6,6 +6,11 @@ var check = require("../Commands/checkIn")
 var walking = require('../HelperFunctions/walk');
 const fs = require('fs-extra');
 
+/*
+ * Moves desired folder to a new destination.
+ * @param targetFolder, a string form of the path of the folder to be moved.
+ * @param whereTo, a string form of the path that the new destination folder will be moved to.
+ */
 function moveDesired(targetFolder, whereTo){
     
     // takes two arguements a folder to move and a destination to move to
@@ -16,12 +21,19 @@ function moveDesired(targetFolder, whereTo){
       });
 }
 
+/*
+ * Copies folder to a new destination.
+ * @param folderToCopy, a string form of the path of folder that will be copied.
+ * @param whereTo, a string form of the path the folder will be copied to.
+ */
 function copyDesired(folderToCopy, whereTo){
     //takes two arguements the folder in the current directory and the new directory to copy it to
     fs.copySync(folderToCopy, whereTo);
 }
 
-//
+/*
+ * Puts manifest from 
+ */
 function checkOut(repoFolder, targetFolder, manifest){
 
     if(repoFolder + "Versions/" + manifest.isDirectory){
