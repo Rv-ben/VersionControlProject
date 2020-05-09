@@ -7,51 +7,70 @@ var repo = par.get("Reponame")
 
 window.onload = function(){
     this.document.getElementById("Title").innerText = repo;
-
-    $.getJSON("http://localhost:5131/json/"+repo,function(data){
-
-    data.Versions.forEach(snapshot => {
-        var listItem = document.createElement("div",{class:"listItem"});
-
-        var textholder = document.createElement("div");
-        textholder.className ="holder";
-
-        var repo = document.createElement("p",{class: "name"});
-        
-        repo.innerText = snapshot.ManifestID;
-        
-        listItem.append(textholder);
-        textholder.append(repo);
-
-        textholder.setAttribute('onclick',"repoPage(this.childNodes[0].innerText)")
-
-        document.getElementById("repoNames").appendChild(listItem);
-
-        snapshot.labels.forEach(label => {
-            listItem = document.createElement("div",{class:"listItem"});
-
-            textholder = document.createElement("div");
-            textholder.className ="holder";
-
-            repo = document.createElement("p",{class: "name"});
-        
-            repo.innerText = label;
-
-            listItem.append(textholder);
-            textholder.append(repo);
-
-            textholder.setAttribute('onclick',"repoPage(this.childNodes[0].innerText)")
-
-            document.getElementById("repoNames").appendChild(listItem);
+    load()
+    
+    function load(){
+        $('#repoNames').html('');
+        $.ajax({
+            url:"http://localhost:5131/json/"+repo,
+            contentType: 'application/json',
+            method: 'GET',
+            success:(function(res){
+                console.log(res)
+                var  list = $('#repoNames')
+                res.Versions.forEach(function(version){
+                    list.append("<div class='holder'><p>"+version.ManifestID+"</p></div>")
+                    version.labels.forEach(function(label){
+                        list.append("<div class='holder'><p>"+label+"</p></div>")
+                    })
+                })
+            })
         })
+        
+    }
 
-        textholder.setAttribute('onclick',"repoPage(this.childNodes[0].innerText)")
-
-        document.getElementById("repoNames").appendChild(listItem);
+    $('#label-form').on('submit',function(event){
+        event.preventDefault();
+        $.ajax({
+            url: '/labelCommand',
+            method: 'POST',
+            data: {
+                newLabel: $('#newLabel').val(),
+                oldLabel: $('#oldLabel').val(),
+                repoName: repo
+            },
+            success: function(response){
+                console.log(response);
+                load()
+            }
+        })
     });
-    })
-    document.getElementById('checkInRepo').value = repo;
-    document.getElementById('checkOutRepo').value = repo;
-    document.getElementById('labelRepo').value = repo;
+
+    $('#checkin-form').on('submit',function(event){
+        event.preventDefault();
+        $.ajax({
+            url: '/checkIn',
+            method: 'POST',
+            data: {
+                repoName: repo
+            }
+        })
+    });
+
+    $('#checkout-form').on('submit',function(event){
+        event.preventDefault();
+        $.ajax({
+            url: '/checkOut',
+            method: 'POST',
+            data: {
+                dir: $('#dir').val(),
+                man: $('#man').val(),
+                repoName: repo
+            }
+        })
+    });
+
+
+
 
 }

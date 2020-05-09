@@ -22,11 +22,6 @@ $.getJSON("http://localhost:5131/repos.json",function(data){
     });
 })
 
-function refresh(){
-    setTimeout(function(){
-        window.location.replace("http://localhost:5131/")
-    },100)
-}
 
 function repoPage(txt){
     //window.location.replace("http://localhost:5131/RepoPage?Reponame="+txt)

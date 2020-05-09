@@ -13,37 +13,46 @@
     <h2 id="Title">
     (Repo Name)
     </h2>
-    <div class = "Actions">
-      <form action="/labelCommand" method="post" class="Label">
-        <button type="submit">Label </button>
-        <input type="text" placeholder="New Label" name="newLabel">
-        <input type="text" placeholder="Old Label/Manifest ID" name="oldLabel">
-        <input type="hidden" id = "labelRepo" value="" name="repo">
-      </form>
-    </div>
+      <div class = "Actions">
+        <form class="Label" id="label-form">
+          <button >Label </button>
+          <input type="text" placeholder="New Label" id="newLabel">
+          <input type="text" placeholder="Old Label/Manifest ID" id="oldLabel">
+        </form>
+        </div>
 
-    <div class="Actions">
-      <form action="/checkIn" method="post" class="Label">
-        <button type="submit">Check in</button>
-        <input type = "hidden" id = "checkInRepo" value="" name = "repo">
-      </form>
-    </div>
-
-    <div class="Actions">
-      <form action="/checkOut" method="post" class="Label">
-        <button type="submit">Check out</button>
-        <input type="text" placeholder="Target Directory" name="dir">
-        <input type="text" placeholder="Manifest" name="man">
-        <input type="hidden" name = "repo" value="" id="checkOutRepo">
-      </form>
-    </div>
-
-    <div class = "SnapshotList">
-      <div class="repoNames" id= "repoNames">
-
+      <div class="Actions" id="checkin-form">
+        <form class="Label">
+          <button id = "checkinbtn" type="submit">Check in</button>
+        </form>
       </div>
-    </div>
 
-  </body>
+      <div class="Actions">
+        <form class="Label" id="checkout-form">
+          <button id ="checkoutbtn" type="submit">Check out</button>
+          <input type="text" placeholder="Target Directory" id="dir">
+          <input type="text" placeholder="Manifest" id="man">
+        </form>
+      </div>
+
+      <div class="Actions" style="margin-top: 1%; margin-right: 12%;">
+        <form class="Label" id="checkout-form">
+          <button id ="checkoutbtn" type="submit">Check out</button>
+          <input type="text" placeholder="Target Directory" id="dir">
+        </form>
+      </div>
+
+      <div class="Actions" style="margin-top: 1%;">
+        <form class="Label" id="checkout-form">
+          <button id ="checkoutbtn" type="submit">Check out</button>
+          <input type="text" placeholder="Target Directory" id="dir">
+          <input type="text" placeholder="Manifest" id="man">
+          <input type="text" placeholder="Target Directory" id="dir">
+        </form>
+      </div>
+
+  <div class="list">
+    <div class="repoNames" id="repoNames">
+  </div>
 
 </html>

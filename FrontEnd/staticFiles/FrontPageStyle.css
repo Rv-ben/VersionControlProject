@@ -4,7 +4,7 @@ body{
 }
 form{
    scale: 150%;
-    margin-bottom: 10%;
+    margin-bottom: 1%;
 }
 h2{
     text-align: center;
@@ -28,12 +28,13 @@ p{
 div.repoNames{
     margin: 10%;
     scale: 200%;
+    overflow-y:auto
 }
 
 div.list{
-    scale: 70%;
-    margin-left: 20%;
-    margin-right: 20%;
+    scale: 100%;
+    overflow-y:auto;
+    margin: 10%;
 }
 
 div.holder{

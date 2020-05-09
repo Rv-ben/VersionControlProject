@@ -14,10 +14,30 @@
     Single Mom's Repos
     </h2>
 
-    <form action="" method="post">
-      <input type="text" placeholder="Repo Name" name="cmd">
-      <button type="submit" onclick="refresh()">Create Repo</button>
+    <form >
+      <input id= "reponame" type="text" placeholder="Repo Name" name="cmd">
+      <button id ="makerepo" type="submit">Create Repo</button>
     </form>
+
+    <script>
+      $(document).ready(function(){
+        $('#makerepo').click(function(){
+          $.ajax({
+            url: '/makerepo',
+            method: 'POST',
+            data: {
+              cmd: $('#reponame').val()
+            },
+            success: function(){
+              alert("Success")
+            },
+            error:function(){
+              alert("error")
+            }
+          })
+          })
+        });
+    </script>
 
     
     <div class = "list">

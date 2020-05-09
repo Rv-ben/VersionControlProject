@@ -44,12 +44,12 @@ ex.listen(port,function(){
 
 //Form declarations
 ex.use(BodyParser.json())
-ex.use(BodyParser.urlencoded({ extended: true }))
+ex.use(BodyParser.urlencoded({ extended: false }))
 
 ex.use(router)
 
 //Form submittion handling 
-ex.post('', function(req,res){
+ex.post('/makerepo', function(req,res){
     fs.writeFile("Manifest.txt","Command Issued:  "+ req.body.cmd +"\n\n",function(error){})
     cmdParser.parse("MakeRepo "+req.body.cmd);
 });
@@ -61,15 +61,16 @@ function frontPage(res){
 
 ex.post('/checkIn', function(req, res){
 
-    console.log(req.body.repo)
+    console.log(req.body.repoName)
     
-    cmdParser.parse("CheckIn " + req.body.repo);
+    //cmdParser.parse("CheckIn " + req.body.repoName);
 });
+
 //repoFolder, targetFolder, manifest
 ex.post('/checkOut', function(req, res){
     var targetLoca = req.body.dir;
     var targetMan = req.body.man;
-    var repoName = req.body.repo;
+    var repoName = req.body.repoName;
 
     
     cmdParser.parse("CheckOut " + repoName+ " " + targetLoca+ " " + targetMan);
@@ -78,7 +79,7 @@ ex.post('/checkOut', function(req, res){
 
 ex.post('/labelCommand', function(req,res){
 
-    console.log(req.body.repo)
-    cmdParser.parse("Label " + req.body.newLabel + " " + req.body.repo + " " + req.body.oldLabel);
-
+    console.log(req.body.repoName)
+    cmdParser.parse("Label " + req.body.newLabel + " " + req.body.repoName + " " + req.body.oldLabel);
+    res.send("Hello")
 });
