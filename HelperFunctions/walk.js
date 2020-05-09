@@ -11,7 +11,7 @@ module.exports= {
 
 /* 
  * Function that walks a folder recursively.
- * @param directoryPath, the path of the folder to be walked.
+ * @param {directoryPath} the path of the folder to be walked.
  */
 function fileWalk(directoryPath){
 
