@@ -3,18 +3,20 @@ var filesSz = require('../HelperFunctions/pathName');
 var fs = require('fs');
 var fse = require('fs-extra');
 var walking = require('../HelperFunctions/walk');
+// var vcsPath = require('../VCS').vcsPath;
 
 module.exports={
 	mergeOut:mergeOut
 }
 
 function mergeOut(Repo, partOfRepo, target){
-    var vcsPath = "C:/Users/colin/IdeaProjects/tester/src/VersionControlProject/";
+    var vcsPath = __dirname + "/../";
     var gma = vcsPath + "Repos/" + Repo + "/Current";
     var version = vcsPath + "Repos/" + Repo + "/Versions/" + partOfRepo ;
     var tar = vcsPath + target;
+    var verFile = "";
 
-    checkIn.checkIn(tar);
+    //checkIn.checkIn(tar);
     
     
     fs.readdir(version , function (err, files) {
@@ -22,7 +24,7 @@ function mergeOut(Repo, partOfRepo, target){
         if (err) {
             return console.log('Unable to scan directory: ' + err);
         }
-        if( !fs.existsSync(tar + "/Versions/")){
+        if(!fs.existsSync(tar + "/Versions/")){
             fs.mkdir(tar + "/Current/", (err) => {})
             fs.mkdir(tar + "/Versions", (err) => {});
         }
@@ -45,32 +47,38 @@ function mergeOut(Repo, partOfRepo, target){
                 fs.mkdir(tar + "/Versions/" + partOfRepo, (err) => {});
                 fse.copySync(version , tar + "/Versions/" + partOfRepo);
             }
-            fileWalk(version + "/" + file1);
+            var verFile = version + "/" + file1
+            fileWalk(verFile);
         }
+
         //if not a dot file get calcs
         else if (!file1.startsWith(".")) {
-
             if(fs.existsSync(tar + "/Versions/" + partOfRepo + "/" + file1)){
                 var targetfile = tar + "/Versions/" + partOfRepo + "/" + file1;
+                console.log(targetfile);
                 var tarRdFile = fs.readFileSync(targetfile , 'utf8'); 
                 let tarLines = tarRdFile.split("\r\n");
-                var rdVer = fs.readFileSync(version, 'utf8');
+                var rdVer = fs.readFileSync(version + "/" + file1, 'utf8');
                 let verLines = rdVer.split("\r\n");
                 
                 if(filesSz.fileSz(tarLines) != filesSz.fileSz(verLines)){
+
                     fs.renameSync(targetfile, tar + "/Versions/" + partOfRepo + "/" + partOfRepo + "MT_");
-                    fs.copyFileSync(version, targetfile);
+                    fs.copyFileSync(version + "/" + file1, targetfile);
                     fs.renameSync(targetfile, tar + "/Versions/" + partOfRepo + "/" + partOfRepo + "MR_");
-                    fse.copySync(gma, targetfile, tar + "/Versions/" + partOfRepo + "/" + "MG_");
+                    fse.copySync(gma, tar + "/Versions/" + partOfRepo + "/" + partOfRepo + "MG_");
                 
             }
            
                     
             }
+            else {
+                fs.copyFileSync(version + "/" + file1, tar + "/Versions/" + partOfRepo +"/" + file1);
+            }
             
     }
 
- 
+    //C:\Users\colin\IdeaProjects\tester\src\VersionControlProject\testMergeOut\Versions\P95L506C5992\P95L506C5992.txt
 })
 walking.walk(tar);
 })
