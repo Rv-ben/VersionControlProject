@@ -53,6 +53,9 @@ window.onload = function(){
             method: 'POST',
             data: {
                 repoName: repo
+            },
+            success: function(res){
+                alert("Command Sent")
             }
         })
     });
@@ -66,6 +69,9 @@ window.onload = function(){
                 dir: $('#dir').val(),
                 man: $('#man').val(),
                 repoName: repo
+            },
+            success: function(res){
+                alert("Command Sent")
             }
         })
     });
@@ -78,6 +84,9 @@ window.onload = function(){
             data: {
                 target: $('#Target').val(),
                 repoName: repo
+            },
+            success: function(res){
+                alert("Command Sent")
             }
         })
     });
@@ -91,6 +100,9 @@ window.onload = function(){
                 branch: $('#branch').val(),
                 snapshot: $('#snapshot').val(),
                 repoName: repo
+            },
+            success: function(res){
+                alert("Command Sent")
             }
         })
     });
