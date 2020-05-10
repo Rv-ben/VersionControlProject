@@ -3,6 +3,8 @@ var mrc = require("./makeRepoCommand");
 var lr = require("./labelCommand");
 var checkIn = require("./checkIn");
 var checkOut = require("../HelperFunctions/copy")
+var MergeIn = require("./mergeIn");
+var MergeOut = require("./mergeOut");
 
 module.exports = {
     parse: parseCMD
@@ -19,13 +21,15 @@ function parseCMD(str){
     var cmd = str.split(" ");
     if(cmd[1] != undefined)
 
-        console.log("Cmd issued: "+cmd[1]+" "+cmd[2]+" ");
+        console.log("Cmd issued: "+cmd[0]);
         //List of commands 
         switch(cmd[0]){
             case "MakeRepo": mrc.mkrepo(cmd[1]); break;
             case "Label" : lr.label(cmd[1],cmd[2],cmd[3]); break;
             case "CheckIn" : checkIn.checkIn(cmd[1]); break;
             case "CheckOut" : checkOut.check(cmd[1], cmd[2], cmd[3]); break;
+            case "MergeIn" : MergeIn.mergeIn(cmd[1]); break;
+            case "MergeOut": MergeOut.mergeOut(cmd[1],cmd[2],cmd[3]); break;
         }
 
 }   

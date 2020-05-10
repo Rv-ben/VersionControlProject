@@ -89,3 +89,9 @@ ex.post('/mergeIn', function(req, res){
     cmdParser.parse("mergeIn " + req.body.dir);
 
 });
+
+ex.post('/mergeOut',function(req,res){
+
+    cmdParser.parse("mergeOut "+ req.body.repoName+" "+req.body.snapshot+" "+req.body.branch)
+
+})
