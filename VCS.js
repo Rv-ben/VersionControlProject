@@ -83,7 +83,7 @@ ex.post('/mergeOut', function(req, res){
     var targetSnapshot = req.body.snapshot;
     var targetTarget = req.body.branch;
 
-    cmdParser.parse("mergeOut " + targetRepo + " " + targetSnapshot + " " + targetTarget)
+    cmdParser.parse("MergeOut " + targetRepo + " " + targetSnapshot + " " + targetTarget)
 
 
 
@@ -98,12 +98,6 @@ ex.post('/labelCommand', function(req,res){
 
 ex.post('/mergeIn', function(req, res){
 
-    cmdParser.parse("mergeIn " + req.body.dir);
+    cmdParser.parse("MergeIn " + req.body.dir);
 
 });
-
-ex.post('/mergeOut',function(req,res){
-
-    cmdParser.parse("mergeOut "+ req.body.repoName+" "+req.body.snapshot+" "+req.body.branch)
-
-})
