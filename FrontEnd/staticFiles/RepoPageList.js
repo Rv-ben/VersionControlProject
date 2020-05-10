@@ -70,6 +70,31 @@ window.onload = function(){
         })
     });
 
+    $('#MergeIn').on('submit',function(event){
+        event.preventDefault();
+        $.ajax({
+            url: '/mergeIn',
+            method: 'POST',
+            data: {
+                target: $('#Target').val(),
+                repoName: repo
+            }
+        })
+    });
+
+    $('#MergeOut').on('submit',function(event){
+        event.preventDefault();
+        $.ajax({
+            url: '/mergeOut',
+            method: 'POST',
+            data: {
+                branch: $('#branch').val(),
+                snapshot: $('#snapshot').val(),
+                repoName: repo
+            }
+        })
+    });
+
 
 
 
