@@ -86,6 +86,6 @@ ex.post('/labelCommand', function(req,res){
 
 ex.post('/mergeIn', function(req, res){
 
-    cmdParser.parse("MergeIn " + req.body.dir);
+    cmdParser.parse("mergeIn " + req.body.dir);
 
 });
