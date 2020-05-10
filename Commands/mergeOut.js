@@ -1,53 +1,22 @@
 var checkIn = require('../Commands/checkIn');
-var len = require('../HelperFunctions/pathName');
 var filesSz = require('../HelperFunctions/pathName');
 var fs = require('fs');
-var cop = require('../HelperFunctions/copy');
 var fse = require('fs-extra');
+var walking = require('../HelperFunctions/walk');
 
-mergeOut("thisrepo", "P1418L513C9382", "testMergeOut");
+module.exports={
+	mergeOut:mergeOut
+}
 
 function mergeOut(Repo, partOfRepo, target){
     var vcsPath = "C:/Users/colin/IdeaProjects/tester/src/VersionControlProject/";
     var gma = vcsPath + "Repos/" + Repo + "/Current";
     var version = vcsPath + "Repos/" + Repo + "/Versions/" + partOfRepo ;
     var tar = vcsPath + target;
-   // checkIn.checkIn(tar);
+
+    checkIn.checkIn(tar);
     
-    //console.log(fs.existsSync(tar + "/Versions/" + partOfRepo));
-    // if(fs.existsSync(tar + "/Versions/" + partOfRepo)){
-    //     var targetfile = tar + "/Versions/" + partOfRepo ;
-    //     var tarRdFile = fs.readFileSync(targetfile , 'utf8'); 
-    //     let tarLines = tarRdFile.split("\r\n");
-    //     var rdVer = fs.readFileSync(version, 'utf8');
-    //     let verLines = rdVer.split("\r\n");
-        
-    //     if(filesSz.fileSz(tarLines) != filesSz.fileSz(verLines)){
-    //         fs.renameSync(targetfile, tar + "/Versions/" + partOfRepo + "/" + partOfRepo + "MT_" +".txt");
-    //         fs.copyFileSync(version, targetfile);
-    //         fs.renameSync(targetfile, tar + "/Versions/" + partOfRepo + "/" + partOfRepo + "MR_" +".txt")
-
-    //         console.log("already there and different");
-    //     }else{
-    //         // in last version of this else wont exist because nothing happens if there already exists a copy of that exact file or folder
-    //         console.log("already there and the same");
-    //     }
-        
-    // }
-    // else{
-    //     if( !fs.exists(tar + "/Versions/", (exists) => {})){
-    //         fs.mkdir(tar + "/Current/", (err) => {})
-    //         fs.mkdir(tar + "/Versions", (err) => {});
-    //     }
-    //     fs.mkdir(tar + "/Versions/" + partOfRepo, (err) => {});
-    //     fse.copySync(version , tar + "/Versions/" + partOfRepo);
-    // }
-
-
-
-
-
-//rename repo path
+    
     fs.readdir(version , function (err, files) {
         //error checking
         if (err) {
@@ -103,6 +72,7 @@ function mergeOut(Repo, partOfRepo, target){
 
  
 })
+walking.walk(tar);
 })
 }
 // //need to figure this out to actually get copy to work
@@ -112,3 +82,40 @@ function mergeOut(Repo, partOfRepo, target){
 // //if collisions happen add duplicates wiht appropriate labels/names
 // // use full path to get to a folder or file in this 
 // // look at checkin for vcs path i think its called fro reference
+
+
+// useful template for the comparisons 
+//console.log(fs.existsSync(tar + "/Versions/" + partOfRepo));
+    // if(fs.existsSync(tar + "/Versions/" + partOfRepo)){
+    //     var targetfile = tar + "/Versions/" + partOfRepo ;
+    //     var tarRdFile = fs.readFileSync(targetfile , 'utf8'); 
+    //     let tarLines = tarRdFile.split("\r\n");
+    //     var rdVer = fs.readFileSync(version, 'utf8');
+    //     let verLines = rdVer.split("\r\n");
+        
+    //     if(filesSz.fileSz(tarLines) != filesSz.fileSz(verLines)){
+    //         fs.renameSync(targetfile, tar + "/Versions/" + partOfRepo + "/" + partOfRepo + "MT_" +".txt");
+    //         fs.copyFileSync(version, targetfile);
+    //         fs.renameSync(targetfile, tar + "/Versions/" + partOfRepo + "/" + partOfRepo + "MR_" +".txt")
+
+    //         console.log("already there and different");
+    //     }else{
+    //         // in last version of this else wont exist because nothing happens if there already exists a copy of that exact file or folder
+    //         console.log("already there and the same");
+    //     }
+        
+    // }
+    // else{
+    //     if( !fs.exists(tar + "/Versions/", (exists) => {})){
+    //         fs.mkdir(tar + "/Current/", (err) => {})
+    //         fs.mkdir(tar + "/Versions", (err) => {});
+    //     }
+    //     fs.mkdir(tar + "/Versions/" + partOfRepo, (err) => {});
+    //     fse.copySync(version , tar + "/Versions/" + partOfRepo);
+    // }
+
+
+
+
+
+//rename repo path

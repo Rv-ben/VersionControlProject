@@ -72,8 +72,20 @@ ex.post('/checkOut', function(req, res){
     var targetMan = req.body.man;
     var repoName = req.body.repoName;
 
+
     
     cmdParser.parse("CheckOut " + repoName+ " " + targetLoca+ " " + targetMan);
+
+});
+
+ex.post('/mergeOut', function(req, res){
+    var targetRepo = req.body.repoName;
+    var targetSnapshot = req.body.snapshot;
+    var targetTarget = req.body.branch;
+
+    cmdParser.parse("mergeOut " + targetRepo + " " + targetSnapshot + " " + targetTarget)
+
+
 
 });
 
