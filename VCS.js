@@ -83,3 +83,9 @@ ex.post('/labelCommand', function(req,res){
     cmdParser.parse("Label " + req.body.newLabel + " " + req.body.repoName + " " + req.body.oldLabel);
     res.send("Hello")
 });
+
+ex.post('/mergeIn', function(req, res){
+
+    cmdParser.parse("MergeIn " + req.body.dir);
+
+});
