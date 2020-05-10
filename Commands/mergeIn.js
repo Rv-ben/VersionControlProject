@@ -1,9 +1,12 @@
 const fs = require('fs');
 const fse = require('fs-extra')
 //utilizing helper functions
+
 var pathName = require('../HelperFunctions/pathName');
 var walking = require('../HelperFunctions/walk');
-
+module.exports={
+	mergeIn:mergeIn
+}
 //need to pull current repo name
 //var repoName = 'mergeOut';
 //mergeIn(repoName);
